@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Blog de Ricardo Vieira sobre programação, informática e aprendizados do curso."
+    />
+    <title>Blog | Ricardo Vieira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+    <script src="assets/js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Página inicial">
+        <span class="brand-mark">R</span>
+        <span>Ricardo Vieira</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" data-main-nav>
+        <a href="index.html" data-nav-link>Início</a>
+        <a href="index.html#projetos" data-nav-link>Projetos</a>
+        <a href="curriculo.html" data-nav-link>Currículo</a>
+        <a href="blog.html" data-nav-link>Blog</a>
+        <a href="contato.html" data-nav-link>Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">Blog</p>
+        <h1>Textos sobre o curso e desenvolvimento web</h1>
+        <p>
+          Uma lista completa com três posts originais relacionados à tecnologia,
+          programação e organização de projetos.
+        </p>
+      </section>
+
+      <section class="section section-light">
+        <div class="blog-list">
+          <article id="post-logica" class="blog-post">
+            <div class="post-meta">
+              <span class="tag">Lógica</span>
+              <time datetime="2026-06-01">01/06/2026</time>
+            </div>
+            <h2>O que aprendi sobre lógica de programação</h2>
+            <p>
+              Antes de escrever qualquer código, eu preciso entender o problema.
+              Esse foi o principal aprendizado em Lógica de Programação I. Um
+              algoritmo não começa no computador, mas na forma como divido uma
+              situação em entradas, processamento e saídas.
+            </p>
+            <p>
+              Ao praticar variáveis, condicionais e repetições, percebi que o
+              código fica mais fácil quando penso em passos pequenos. Se uma
+              decisão depende de uma nota, por exemplo, posso testar se a média é
+              suficiente antes de mostrar o resultado. Essa sequência torna o
+              raciocínio mais claro e evita erros.
+            </p>
+            <p>
+              Também aprendi que testar faz parte do processo. Um programa que
+              funciona apenas em um caso ainda precisa ser verificado com valores
+              diferentes. Essa atenção ajuda a criar soluções mais confiáveis.
+            </p>
+          </article>
+
+          <article id="post-organizacao" class="blog-post">
+            <div class="post-meta">
+              <span class="tag">Informática</span>
+              <time datetime="2026-05-29">29/05/2026</time>
+            </div>
+            <h2>Por que organizar arquivos muda o desenvolvimento</h2>
+            <p>
+              No início, parece mais rápido colocar todos os arquivos na mesma
+              pasta. Depois de alguns testes, fica difícil encontrar imagens,
+              folhas de estilo e scripts. Por isso, a organização do projeto é
+              um requisito importante.
+            </p>
+            <p>
+              Separar HTML, CSS, JavaScript e imagens cria uma estrutura lógica.
+              Quando o site cresce, essa divisão ajuda a localizar problemas,
+              trocar arquivos e publicar o projeto em serviços como o GitHub
+              Pages.
+            </p>
+            <p>
+              Essa organização também comunica cuidado. Quem abre o projeto
+              consegue entender rapidamente onde está cada parte, o que facilita
+              manutenção e avaliação.
+            </p>
+          </article>
+
+          <article id="post-web" class="blog-post">
+            <div class="post-meta">
+              <span class="tag">Web</span>
+              <time datetime="2026-05-25">25/05/2026</time>
+            </div>
+            <h2>Primeiros passos com HTML, CSS e JavaScript</h2>
+            <p>
+              HTML, CSS e JavaScript formam a base de um site. O HTML organiza o
+              conteúdo com títulos, parágrafos, links, listas e formulários. O
+              CSS cuida da aparência, como cores, tamanhos, espaçamentos e
+              adaptação para celular.
+            </p>
+            <p>
+              O JavaScript adiciona comportamento. Neste portfólio, ele controla
+              o menu em telas menores, destaca a navegação atual e valida o
+              formulário de contato antes do envio.
+            </p>
+            <p>
+              Entender a função de cada linguagem ajuda a escrever código mais
+              limpo. Quando cada arquivo cumpre seu papel, o projeto fica mais
+              simples de evoluir.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-current-year></span> Ricardo Vieira. Portfólio pessoal.</p>
+      <a href="contato.html">Entre em contato</a>
+    </footer>
+  </body>
+</html>
