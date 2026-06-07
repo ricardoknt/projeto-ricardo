@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio pessoal de Ricardo Vieira com projetos, currículo, blog e contato."
+    />
+    <title>Ricardo Vieira | Portfólio Pessoal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+    <script src="assets/js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Página inicial">
+        <span class="brand-mark">R</span>
+        <span>Ricardo Vieira</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" data-main-nav>
+        <a href="index.html" data-nav-link>Início</a>
+        <a href="index.html#projetos" data-nav-link>Projetos</a>
+        <a href="curriculo.html" data-nav-link>Currículo</a>
+        <a href="blog.html" data-nav-link>Blog</a>
+        <a href="contato.html" data-nav-link>Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Portfólio pessoal com blog</p>
+          <h1>Sou Ricardo, estudante de tecnologia em construção constante.</h1>
+          <p class="hero-text">
+            Aqui reúno meus projetos, aprendizados de lógica de programação,
+            anotações do curso e formas de contato profissional.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#posts-recentes">Ver posts</a>
+            <a class="button secondary" href="#projetos">Conhecer projetos</a>
+          </div>
+        </div>
+
+        <aside class="profile-panel" aria-label="Resumo do perfil">
+          <img
+            src="assets/imagens/86f17eee-1312-45ca-8c54-e87ccebf3064.png"
+            alt="Ilustração de perfil de Ricardo Vieira"
+            class="profile-image"
+          />
+          <div>
+            <strong>Ricardo Vieira</strong>
+            <span>HTML, CSS, JavaScript e fundamentos de informática</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="posts-recentes" class="section section-light">
+        <div class="section-heading">
+          <p class="eyebrow">Blog</p>
+          <h2>Posts mais recentes</h2>
+          <p>
+            Três textos sobre aprendizados do semestre, ferramentas e primeiros
+            passos em desenvolvimento web.
+          </p>
+        </div>
+
+        <div class="post-grid">
+          <article class="post-card">
+            <span class="tag">Lógica</span>
+            <h3>O que aprendi sobre lógica de programação</h3>
+            <p>
+              Lógica é o ponto de partida para transformar problemas em passos
+              claros, testáveis e possíveis de melhorar.
+            </p>
+            <a href="blog.html#post-logica">Ler post</a>
+          </article>
+
+          <article class="post-card">
+            <span class="tag">Informática</span>
+            <h3>Por que organizar arquivos muda o desenvolvimento</h3>
+            <p>
+              Uma boa estrutura de pastas facilita manutenção, publicação e
+              entendimento do projeto por outras pessoas.
+            </p>
+            <a href="blog.html#post-organizacao">Ler post</a>
+          </article>
+
+          <article class="post-card">
+            <span class="tag">Web</span>
+            <h3>Primeiros passos com HTML, CSS e JavaScript</h3>
+            <p>
+              Cada tecnologia tem uma função: estruturar, apresentar e criar
+              interação com o visitante.
+            </p>
+            <a href="blog.html#post-web">Ler post</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="projetos" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Projetos</p>
+          <h2>Galeria de trabalhos do curso</h2>
+          <p>
+            Projetos organizados por disciplina, objetivo e tecnologias usadas.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-media media-blue">01</div>
+            <div class="project-body">
+              <span class="tag">Lógica de Programação I</span>
+              <h3>Calculadora de médias</h3>
+              <p>
+                Aplicação simples para receber notas, calcular média final e
+                indicar a situação do aluno.
+              </p>
+              <dl>
+                <div>
+                  <dt>Disciplina</dt>
+                  <dd>Lógica de Programação I</dd>
+                </div>
+                <div>
+                  <dt>Tecnologias</dt>
+                  <dd>HTML, CSS, JavaScript</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media media-gray">02</div>
+            <div class="project-body">
+              <span class="tag">Introdução à Informática</span>
+              <h3>Página de apresentação pessoal</h3>
+              <p>
+                Página estática criada para praticar estrutura HTML, organização
+                de arquivos e publicação local.
+              </p>
+              <dl>
+                <div>
+                  <dt>Disciplina</dt>
+                  <dd>Introdução à Informática</dd>
+                </div>
+                <div>
+                  <dt>Tecnologias</dt>
+                  <dd>HTML semântico, CSS responsivo</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media media-dark">03</div>
+            <div class="project-body">
+              <span class="tag">Projeto Integrador</span>
+              <h3>Portfólio pessoal com blog</h3>
+              <p>
+                Site atual com menu de navegação, blog, currículo, formulário de
+                contato validado e layout responsivo.
+              </p>
+              <dl>
+                <div>
+                  <dt>Disciplina</dt>
+                  <dd>Projeto Integrador</dd>
+                </div>
+                <div>
+                  <dt>Tecnologias</dt>
+                  <dd>HTML, CSS, JavaScript puro</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-current-year></span> Ricardo Vieira. Portfólio pessoal.</p>
+      <a href="contato.html">Entre em contato</a>
+    </footer>
+  </body>
+</html>
