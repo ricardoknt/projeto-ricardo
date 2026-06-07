@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contato de Ricardo Vieira com formulário, GitHub, LinkedIn e especificações de acesso."
+    />
+    <title>Contato | Ricardo Vieira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/estilo.css" />
+    <script src="assets/js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Página inicial">
+        <span class="brand-mark">R</span>
+        <span>Ricardo Vieira</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" data-main-nav>
+        <a href="index.html" data-nav-link>Início</a>
+        <a href="index.html#projetos" data-nav-link>Projetos</a>
+        <a href="curriculo.html" data-nav-link>Currículo</a>
+        <a href="blog.html" data-nav-link>Blog</a>
+        <a href="contato.html" data-nav-link>Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">Contato</p>
+        <h1>Vamos conversar sobre tecnologia e projetos</h1>
+        <p>
+          Envie uma mensagem pelo formulário ou acesse os perfis profissionais
+          indicados abaixo.
+        </p>
+      </section>
+
+      <section class="section contact-layout">
+        <form class="contact-form" novalidate data-contact-form>
+          <div class="form-row">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" />
+            <small class="field-error" data-error-for="nome"></small>
+          </div>
+
+          <div class="form-row">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" />
+            <small class="field-error" data-error-for="email"></small>
+          </div>
+
+          <div class="form-row">
+            <label for="assunto">Assunto</label>
+            <input id="assunto" name="assunto" type="text" />
+            <small class="field-error" data-error-for="assunto"></small>
+          </div>
+
+          <div class="form-row">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="6" maxlength="500"></textarea>
+            <small class="field-hint">
+              <span data-message-count>0</span>/500 caracteres
+            </small>
+            <small class="field-error" data-error-for="mensagem"></small>
+          </div>
+
+          <button class="button primary" type="submit">Enviar mensagem</button>
+          <p class="form-status" role="status" data-form-status></p>
+        </form>
+
+        <aside class="contact-info">
+          <article>
+            <h2>Perfis</h2>
+            <p>
+              GitHub:
+              <a href="https://github.com/" target="_blank" rel="noreferrer">
+                https://github.com/ricardoknt
+              </a>
+            </p>
+            <p>
+              Instagram:
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                https://www.instagram.com/ricardo.konato
+              </a>
+            </p>
+          </article>
+
+          <article>
+            <h2>Ferramentas usadas</h2>
+            <ul>
+              <li>VS Code como editor principal.</li>
+              <li>Google Chrome para testes e responsividade.</li>
+              <li>Google Fonts para tipografia.</li>
+              <li>GitHub Pages como hospedagem gratuita.</li>
+            </ul>
+          </article>
+        </aside>
+      </section>
+
+      <section class="section section-light specs-section">
+        <div class="section-heading">
+          <p class="eyebrow">Informática</p>
+          <h2>Especificações para acesso ao site</h2>
+          <p>
+            O site é leve e foi criado para funcionar bem em computadores e
+            celulares com navegadores modernos.
+          </p>
+        </div>
+
+        <div class="spec-grid">
+          <article class="spec-card">
+            <h3>Configuração mínima</h3>
+            <ul>
+              <li>Computador ou celular com navegador atualizado.</li>
+              <li>Processador dual-core ou equivalente.</li>
+              <li>2 GB de memória RAM.</li>
+              <li>Conexão estável a partir de 5 Mbps.</li>
+              <li>Resolução mínima de 360 px de largura em celulares.</li>
+            </ul>
+          </article>
+
+          <article class="spec-card">
+            <h3>Configuração recomendada</h3>
+            <ul>
+              <li>Google Chrome atualizado.</li>
+              <li>Processador quad-core ou equivalente.</li>
+              <li>4 GB de memória RAM ou mais.</li>
+              <li>Conexão de 10 Mbps ou superior.</li>
+              <li>Tela HD ou Full HD para melhor leitura.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-current-year></span> Ricardo Vieira. Portfólio pessoal.</p>
+      <a href="blog.html">Ler o blog</a>
+    </footer>
+  </body>
+</html>
