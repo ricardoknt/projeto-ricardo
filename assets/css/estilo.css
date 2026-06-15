@@ -31,13 +31,13 @@ img {
 }
 
 a {
-  color:  var(--branco);
+  color:  var(--preto);
   text-decoration: none;
 }
 
 a:hover,
 a:focus-visible {
-  color: var(--branco);
+  color: var(--preto);
 }
 
 .site-header {
@@ -339,7 +339,7 @@ h3 {
 .blog-post a,
 .contact-info a,
 .site-footer a {
-  color: var(--branco);
+  color: var(--preto);
   font-weight: 800;
 }
 
