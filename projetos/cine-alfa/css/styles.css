@@ -2966,3 +2966,186 @@ Precisamos reajustar o header e o menu para não desperdiçar espaço vertical.
         object-fit: contain;
     }
 }
+
+/* --- Carrossel: seção e container refinados --- */
+.carousel-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8px clamp(16px, 4vw, 40px) 36px;
+}
+
+.carousel-section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+    padding-left: 4px;
+}
+
+.carousel-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a227;
+}
+
+.carousel-section-title {
+    margin: 0;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.carousel-container {
+    min-height: 420px;
+    height: clamp(420px, 52vh, 560px);
+    border-radius: 18px;
+    box-shadow:
+        0 28px 56px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    isolation: isolate;
+}
+
+.carousel-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 11;
+    box-shadow:
+        inset 0 0 100px rgba(201, 162, 39, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.carousel-fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 130px;
+    background: linear-gradient(to top, rgba(20, 20, 20, 0.95) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 6;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 12;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.carousel-nav:hover,
+.carousel-nav:focus-visible {
+    background: rgba(201, 162, 39, 0.92);
+    border-color: #e0bc3a;
+    color: #141414;
+    transform: translateY(-50%) scale(1.06);
+}
+
+.carousel-prev {
+    left: 18px;
+}
+
+.carousel-next {
+    right: 18px;
+}
+
+.carousel-dots {
+    bottom: 24px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    background-color: transparent;
+}
+
+.carousel-dots .dot:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-dots .dot.active {
+    background-color: #c9a227;
+    border-color: #e0bc3a;
+    box-shadow: 0 0 14px rgba(201, 162, 39, 0.65);
+    transform: scale(1.25);
+}
+
+@media (max-width: 768px) {
+    .carousel-section {
+        padding-bottom: 24px;
+    }
+
+    .carousel-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1.45rem;
+    }
+
+    .carousel-prev {
+        left: 10px;
+    }
+
+    .carousel-next {
+        right: 10px;
+    }
+}
+
+.back-portfolio {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 1000;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.82);
+    border: 1px solid rgba(201, 162, 39, 0.45);
+    color: #f5f5f5;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.back-portfolio:hover,
+.back-portfolio:focus-visible {
+    background: #c9a227;
+    color: #141414;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .carousel-track {
+        transition: none;
+    }
+
+    .carousel-nav,
+    .dot {
+        transition: none;
+    }
+}
