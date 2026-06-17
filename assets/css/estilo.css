@@ -357,9 +357,13 @@ h3 {
 
 .post-card a,
 .blog-post a,
-.contact-info a,
 .site-footer a {
   color: var(--branco);
+  font-weight: 800;
+}
+
+.contact-info article a {
+  color: var(--preto);
   font-weight: 800;
 }
 
