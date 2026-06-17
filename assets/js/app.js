@@ -1,57 +1,79 @@
-const menuButton = document.querySelector("[data-menu-toggle]");
-const mainNav = document.querySelector("[data-main-nav]");
-const yearTarget = document.querySelector("[data-current-year]");
-const contactForm = document.querySelector("[data-contact-form]");
-const messageField = document.querySelector("#mensagem");
-const messageCount = document.querySelector("[data-message-count]");
+async function loadInclude(selector, url) {
+  const placeholder = document.querySelector(selector);
 
-if (yearTarget) {
-  yearTarget.textContent = new Date().getFullYear();
-}
+  if (!placeholder) {
+    return;
+  }
 
-if (menuButton && mainNav) {
-  menuButton.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
-  });
-}
+  try {
+    const response = await fetch(url);
 
-function updateActiveNavLink() {
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const currentHash = window.location.hash;
-  const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
-  const sectionMatch = navLinks.some((link) => {
-    const [linkPageValue, linkHash] = link.getAttribute("href").split("#");
-    const linkPage = linkPageValue || "index.html";
-
-    return linkPage === currentPage && Boolean(linkHash) && currentHash === `#${linkHash}`;
-  });
-
-  navLinks.forEach((link) => {
-    const [linkPageValue, linkHash] = link.getAttribute("href").split("#");
-    const linkPage = linkPageValue || "index.html";
-    const isSamePage = linkPage === currentPage;
-    const isSectionLink = Boolean(linkHash);
-    const isCurrentPage = isSamePage && !isSectionLink && !sectionMatch;
-    const isCurrentSection = isSamePage && currentHash === `#${linkHash}`;
-
-    link.classList.toggle("active", isCurrentPage || isCurrentSection);
-  });
-}
-
-updateActiveNavLink();
-window.addEventListener("hashchange", updateActiveNavLink);
-
-document.querySelectorAll("[data-nav-link]").forEach((link) => {
-  link.addEventListener("click", () => {
-    if (mainNav && menuButton) {
-      mainNav.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Abrir menu");
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
+
+    placeholder.outerHTML = await response.text();
+  } catch (error) {
+    console.warn(`Não foi possível carregar ${url}. Use um servidor local.`, error);
+  }
+}
+
+function initYear() {
+  const yearTarget = document.querySelector("[data-current-year]");
+
+  if (yearTarget) {
+    yearTarget.textContent = new Date().getFullYear();
+  }
+}
+
+function initNavigation() {
+  const menuButton = document.querySelector("[data-menu-toggle]");
+  const mainNav = document.querySelector("[data-main-nav]");
+
+  if (menuButton && mainNav) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+    });
+  }
+
+  function updateActiveNavLink() {
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const currentHash = window.location.hash;
+    const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+    const sectionMatch = navLinks.some((link) => {
+      const [linkPageValue, linkHash] = link.getAttribute("href").split("#");
+      const linkPage = linkPageValue || "index.html";
+
+      return linkPage === currentPage && Boolean(linkHash) && currentHash === `#${linkHash}`;
+    });
+
+    navLinks.forEach((link) => {
+      const [linkPageValue, linkHash] = link.getAttribute("href").split("#");
+      const linkPage = linkPageValue || "index.html";
+      const isSamePage = linkPage === currentPage;
+      const isSectionLink = Boolean(linkHash);
+      const isCurrentPage = isSamePage && !isSectionLink && !sectionMatch;
+      const isCurrentSection = isSamePage && currentHash === `#${linkHash}`;
+
+      link.classList.toggle("active", isCurrentPage || isCurrentSection);
+    });
+  }
+
+  updateActiveNavLink();
+  window.addEventListener("hashchange", updateActiveNavLink);
+
+  document.querySelectorAll("[data-nav-link]").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (mainNav && menuButton) {
+        mainNav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Abrir menu");
+      }
+    });
   });
-});
+}
 
 function showFieldError(fieldName, message) {
   const errorTarget = document.querySelector(`[data-error-for="${fieldName}"]`);
@@ -65,7 +87,6 @@ function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Regras simples para validar os campos antes de simular o envio.
 function validateContactForm(form) {
   const data = new FormData(form);
   const fields = {
@@ -89,13 +110,21 @@ function validateContactForm(form) {
   return !Object.values(errors).some(Boolean);
 }
 
-if (messageField && messageCount) {
-  messageField.addEventListener("input", () => {
-    messageCount.textContent = messageField.value.length;
-  });
-}
+function initContactForm() {
+  const contactForm = document.querySelector("[data-contact-form]");
+  const messageField = document.querySelector("#mensagem");
+  const messageCount = document.querySelector("[data-message-count]");
 
-if (contactForm) {
+  if (messageField && messageCount) {
+    messageField.addEventListener("input", () => {
+      messageCount.textContent = messageField.value.length;
+    });
+  }
+
+  if (!contactForm) {
+    return;
+  }
+
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -109,10 +138,24 @@ if (contactForm) {
       }
 
       if (status) {
-        status.textContent = "Mensagem validada com sucesso.";
+        status.textContent =
+          "Validação concluída. Este formulário é uma demonstração acadêmica e não envia e-mail.";
       }
     } else if (status) {
       status.textContent = "Revise os campos destacados antes de enviar.";
     }
   });
 }
+
+async function bootstrap() {
+  await Promise.all([
+    loadInclude("[data-site-header]", "assets/includes/header.html"),
+    loadInclude("[data-site-footer]", "assets/includes/footer.html"),
+  ]);
+
+  initYear();
+  initNavigation();
+  initContactForm();
+}
+
+bootstrap();
