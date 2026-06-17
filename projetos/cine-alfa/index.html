@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfa Cinemas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="imagens/icone.png" type="image/png">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="main-content">
+
+    <div class="banner-container">
+    <img src="imagens/banner.png" alt="A Dobradinha Cinealfa Voltou!" class="banner-img">
+    </div>
+
+    <div class="carousel-container">
+    <div class="carousel-track" id="track">
+    
+    
+        <div class="slide" style="--bg-url: url('imagens/carrossel/filme1_a.webp');">
+            <div class="slide-background"></div>
+            <div class="slide-hero-right"></div>
+
+            <div class="slide-info-left">
+                <h2 class="movie-title">Crepúsculo</h2>
+                <div class="movie-tags">
+                    <span class="tag age-rating age-14">14</span>
+                    <span class="tag">Sala 1 - VIP (Dublado)</span>
+                </div>
+                <p class="movie-sessions-title">Horários de Hoje:</p>
+                <div class="movie-times">
+                    <span class="time">14:00</span>
+                    <span class="time">16:30</span>
+                    <span class="time">19:00</span>
+                </div>
+
+                <div class="movie-actions">
+                    <button class="btn-trailer-outline btn-play-trailer" data-video="3UcF6Jq3sAY">
+                        ▶ Ver Trailer
+                    </button>
+                    <button class="btn-sinopse"
+                            data-titulo="Crepúsculo"
+                            data-imagem="imagens/carrossel/filme1.jpg"
+                            data-texto="Crepúsculo foi adaptado do best seller homônimo e retorna aos cinemas brasileiros 18 anos após a estreia e incríveis US$ 399,9 milhões faturados mundo afora. Uma chance incrível de conferir na sala escura, e telona do Kinoplex, como tudo começou na saga de Bella Swan (Kristen Stewart). Ao mudar-se para uma pequena cidade, a jovem se apaixona por Edward Cullen (Robert Pattinson), membro de uma misteriosa família, e acaba envolvida em uma complicada trama entre vampiros e lobisomens. Da mesma roteirista das sequências A Saga Crepúsculo: Lua Nova (2009), A Saga Crepúsculo: Eclipse (2010), A Saga Crepúsculo: Amanhecer - Parte 1 (2011) e A Saga Crepúsculo: Amanhecer - Parte 2 (2012).">
+                        Sinopse
+                    </button>
+                    <button class="btn-buy-tickets btn-open-ticket"
+                            data-filme="Crepúsculo"
+                            data-horarios='["14:00","16:30","19:00"]'
+                            data-sala="Sala 1 - VIP (Dublado)">
+                        🎟️ Comprar Ingresso
+                    </button>
+                </div>
+            </div>
+
+            <div class="slide-poster-wrapper">
+                <img src="imagens/carrossel/filme1.jpg" alt="Pôster de Crepúsculo" class="slide-poster-img">
+            </div>
+        </div>
+
+        <div class="slide" style="--bg-url: url('imagens/carrossel/filme2_a.webp');">
+            <div class="slide-background"></div>
+            <div class="slide-hero-right"></div>
+
+            <div class="slide-info-left">
+                <h2 class="movie-title">CARA DE UM, FOCINHO DE OUTRO</h2>
+                <div class="movie-tags">
+                    <span class="tag age-rating age-12">12</span>
+                    <span class="tag">Sala 2 - VIP (Dublado)</span>
+                </div>
+                <p class="movie-sessions-title">Horários de Hoje:</p>
+                <div class="movie-times">
+                    <span class="time">16:30</span>
+                </div>
+
+                <div class="movie-actions">
+                    <button class="btn-trailer-outline btn-play-trailer" data-video="dgHCQEYnuAI">
+                        ▶ Ver Trailer
+                    </button>
+                    <button class="btn-sinopse"
+                            data-titulo="CARA DE UM, FOCINHO DE OUTRO"
+                            data-imagem="imagens/carrossel/filme2.webp"
+                            data-texto="Cara De Um, Focinho De Outro é do mesmo criador e roteirista de Luca, indicado ao Oscar 2022 de Melhor Animação. Mabel é apaixonada pelos bichos. Quando descobre um experimento tecnológico que permite aos humanos se infiltrar no mundo animal, ela se joga na experiência. Na pele e no cérebro de um castor falso, ela fica maravilhada ao ver os animais se comunicando e podendo fazer o mesmo. Após descobrir também que eles têm suas próprias regras, Mabel resolve influenciar a bicharada com ideias revolucionárias, mas a coisa fica totalmente fora do controle. E agora? Da mesma produtora de Toy Story 3, Oscar 2011 de Melhor Animação, e de Os Incríveis 2, indicado ao Oscar 2019 de Melhor Animação.">
+                        Sinopse
+                    </button>
+                    <button class="btn-buy-tickets btn-open-ticket"
+                            data-filme="CARA DE UM, FOCINHO DE OUTRO"
+                            data-horarios='["16:30"]'
+                            data-sala="Sala 2 - VIP (Dublado)">
+                        🎟️ Comprar Ingresso
+                    </button>
+                </div>
+            </div>
+
+            <div class="slide-poster-wrapper">
+                <img src="imagens/carrossel/filme2.webp" alt="Pôster de CARA DE UM, FOCINHO DE OUTRO" class="slide-poster-img">
+            </div>
+        </div>
+
+        <div class="slide" style="--bg-url: url('imagens/carrossel/filme3_a.webp');">
+            <div class="slide-background"></div>
+            <div class="slide-hero-right"></div>
+
+            <div class="slide-info-left">
+                <h2 class="movie-title">UMA SEGUNDA CHANCE</h2>
+                <div class="movie-tags">
+                    <span class="tag age-rating age-16">16</span>
+                    <span class="tag">Sala 2 - VIP (Legendado)</span>
+                </div>
+                <p class="movie-sessions-title">Horários de Hoje:</p>
+                <div class="movie-times">
+                    <span class="time">19:30</span>
+                    <span class="time">21:30</span>
+                </div>
+
+                <div class="movie-actions">
+                    <button class="btn-trailer-outline btn-play-trailer" data-video="9zj3HjtTdlI">
+                        ▶ Ver Trailer
+                    </button>
+                    <button class="btn-sinopse"
+                            data-titulo="UMA SEGUNDA CHANCE"
+                            data-imagem="imagens/carrossel/filme3.jpg"
+                            data-texto="Uma Segunda Chance é da mesma produtora de De Repente 30 (2004) e Do Que as Mulheres Gostam (2000). Kenna (Maika Monroe) e Scotty (Rudy Pankow) foram separados por um trágico acidente. Condenada, Kenna cumpriu anos de prisão, mas o pior ainda estava por vir. Solta, ela volta pra cidade, é rejeitada e descobre que os sogros a querem distante da neta. Agora, além do luto e da condenação, ela não pode conhecer a própria filha. Na medida em que o melhor amigo de Scotty se sensibiliza com a situação dela, um outro sentimento desperta entre eles e o nível de tensão só aumenta. Da mesma roteirista e autora dos best sellers que geraram os filmes Se Não Fosse Você (2025) e É Assim Que Acaba (2024).">
+                        Sinopse
+                    </button>
+                    <button class="btn-buy-tickets btn-open-ticket"
+                            data-filme="UMA SEGUNDA CHANCE"
+                            data-horarios='["19:30","21:30"]'
+                            data-sala="Sala 2 - VIP (Legendado)">
+                        🎟️ Comprar Ingresso
+                    </button>
+                </div>
+            </div>
+
+            <div class="slide-poster-wrapper">
+                <img src="imagens/carrossel/filme3.jpg" alt="Pôster de UMA SEGUNDA CHANCE" class="slide-poster-img">
+            </div>
+        </div>
+
+        <div class="slide" style="--bg-url: url('imagens/carrossel/filme4_a.jpg');">
+            <div class="slide-background"></div>
+            <div class="slide-hero-right"></div>
+
+            <div class="slide-info-left">
+                <h2 class="movie-title">PÂNICO 7</h2>
+                <div class="movie-tags">
+                    <span class="tag age-rating age-16">16</span>
+                    <span class="tag">Sala 1 - VIP (Dublado)</span>
+                </div>
+                <p class="movie-sessions-title">Horários de Hoje:</p>
+                <div class="movie-times">
+                    <span class="time">22:00</span>
+                </div>
+
+                <div class="movie-actions">
+                    <button class="btn-trailer-outline btn-play-trailer" data-video="3R9o8R8O7F8">
+                        ▶ Ver Trailer
+                    </button>
+                    <button class="btn-sinopse"
+                            data-titulo="PÂNICO 7"
+                            data-imagem="imagens/carrossel/filme4.jpg"
+                            data-texto="Pânico 7 é do mesmo criador da famosa série de filmes iniciada com Pânico (1996), Pânico 2 (1997), Pânico 3 (2000), Pânico 4 (2011), Pânico (2022) e Pânico VI (2023). Um novo Ghostface aparece na pacata e icônica cidade de Woodsboro. Após ele ligar para Sidney Prescott (Neve Campbell) para anunciar o seu retorno, ela chega a pensar que poderia ser apenas um trote. Quando ele sinaliza que a filha dela (Isabel May) está em seu radar, Sidney entende que precisará retornar para o lugar onde vivenciou seus medos mais sombrios. Uma vez lá, e com a ajuda da veterana Gale Weathers (Courteney Cox), ela superará todos os seus limites para proteger sua família e desmascarar esse novo assassino serial.">
+                        Sinopse
+                    </button>
+                    <button class="btn-buy-tickets btn-open-ticket"
+                            data-filme="PÂNICO 7"
+                            data-horarios='["22:00"]'
+                            data-sala="Sala 1 - VIP (Dublado)">
+                        🎟️ Comprar Ingresso
+                    </button>
+                </div>
+            </div>
+
+            <div class="slide-poster-wrapper">
+                <img src="imagens/carrossel/filme4.jpg" alt="Pôster de PÂNICO 7" class="slide-poster-img">
+            </div>
+        </div>
+
+        <div class="slide" style="--bg-url: url('imagens/carrossel/filme5_a.jpg');">
+            <div class="slide-background"></div>
+            <div class="slide-hero-right"></div>
+
+            <div class="slide-info-left">
+                <h2 class="movie-title">DEVORADORES DE ESTRELAS</h2>
+                <div class="movie-tags">
+                    <span class="tag age-rating age-14">12</span>
+                    <span class="tag">Sala 4 - VIP (Legendado)</span>
+                </div>
+                <p class="movie-sessions-title">Horários de Hoje:</p>
+                <div class="movie-times">
+                    <span class="time">22:00</span>
+                </div>
+
+                <div class="movie-actions">
+                    <button class="btn-trailer-outline btn-play-trailer" data-video="uI1KofmBtYI">
+                        ▶ Ver Trailer
+                    </button>
+                    <button class="btn-sinopse"
+                            data-titulo="DEVORADORES DE ESTRELAS"
+                            data-imagem="imagens/carrossel/filme5.jpg"
+                            data-texto="Devoradores de Estrelas é dos mesmos produtores de Homem-Aranha no Aranhaverso (2018), Oscar de Melhor Animação, e Homem-Aranha: Através do Aranhaverso (2023). Professor de ciências, Ryland Grace (Ryan Gosling) tem um raro conhecimento para desvendar um mistério que está colocando o planeta Terra em risco de extinção. De forma surpreendente, mesmo sem ser um astronauta, ele acaba designado para uma perigosa missão de salvamento solitária no espaço. Uma vez lá, enquanto dava andamento em suas pesquisas, o inesperado acontece e ele mantém contato com um ser desconhecido. Do mesmo roteirista de Perdido em Marte (2018), indicado ao Oscar de Melhor Filme, Roteiro Adaptado e mais cinco indicações.">
+                        Sinopse
+                    </button>
+                    <button class="btn-buy-tickets btn-open-ticket"
+                            data-filme="DEVORADORES DE ESTRELAS"
+                            data-horarios='["22:00"]'
+                            data-sala="Sala 4 - VIP (Legendado)">
+                        🎟️ Comprar Ingresso
+                    </button>
+                </div>
+            </div>
+
+            <div class="slide-poster-wrapper">
+                <img src="imagens/carrossel/filme5.jpg" alt="Pôster de DEVORADORES DE ESTRELAS" class="slide-poster-img">
+            </div>
+        </div>
+
+    </div>  
+        <div class="carousel-dots" id="dots-container"></div>
+    </div>
+
+    <section class="coming-soon-section">
+        
+        <div class="coming-soon-container">
+            
+            <div class="coming-soon-text-col">
+                <span class="coming-soon-badge">Estreia em 30 de Abril</span>
+                <h2 class="coming-soon-title">O Diabo Veste Prada 2</h2>
+                <p class="coming-soon-desc">
+                    Miranda Priestly luta contra Emily Charlton, sua ex-assistente que se tornou uma executiva. Miranda se aproxima da aposentadoria enquanto compete pela publicidade em meio ao declínio da mídia impressa.
+                </p>
+                
+                <button class="btn-trailer-outline btn-play-trailer" data-video="Qif2dtDuICk">
+                    ▶ Assistir ao Teaser
+                </button>
+            </div>
+            
+            <div class="coming-soon-poster-col">
+                <img src="imagens/carrossel/prada2-poster.jpg" alt="Pôster do Diabo Veste Prada 2" class="coming-soon-poster-img">
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="promo-sales-section">
+        <div class="promo-sales-content">
+            <span class="promo-badge">Sucesso de Bilheteria</span>
+            
+            <h2 class="promo-title">Crepúsculo</h2>
+            <p class="promo-desc">
+                Reviva a saga nas nossas telas. Garanta o seu lugar nas últimas sessões exclusivas com tecnologia IMAX 3D.
+            </p>
+            
+            <div class="promo-actions">
+                <button class="btn-buy-tickets btn-open-ticket"
+                        data-filme="Crepúsculo"
+                        data-horarios='["14:00","16:30","19:00"]'
+                        data-sala="Sala 1 - VIP (Dublado)">
+                    🎟️ COMPRAR INGRESSO
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+                        
+
+
+        <div id="video-modal" class="video-modal-overlay">
+            <div class="video-modal-content">
+                <span id="close-video-modal" class="close-video-btn">&times;</span>
+                <div class="iframe-container">
+                    <iframe id="youtube-iframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- SINOPSE-->
+        <div id="synopsis-modal" class="modal-overlay">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2 id="modal-dinamico-titulo" class="gold-title">Carregando...</h2>
+                    <span id="close-modal" class="close-btn">&times;</span>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="modal-poster-col">
+                        <img id="modal-dinamico-imagem" src="" alt="Pôster" class="modal-poster-img">
+                    </div>
+                    <div class="modal-text-col">
+                        <h3 class="synopsis-heading">SINOPSE COMPLETA</h3>
+                        <p id="modal-dinamico-texto" class="synopsis-text">Carregando informações do filme...</p>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="modal-cta-button btn-open-ticket-from-synopsis">COMPRAR INGRESSO</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">EM CARTAZ</h2>
+
+<div class="movie-list">
+
+    <article class="movie-card">
+        <div class="movie-card-poster">
+            <img src="imagens/carrossel/filme1.jpg" alt="Crepúsculo">
+        </div>
+
+        <div class="movie-card-info">
+            <h3 class="movie-card-title">Crepúsculo</h3>
+
+            <div class="movie-tags">
+                <span class="tag age-rating age-14">14</span>
+                <span class="tag">Romance/Fantasia</span>
+            </div>
+
+            <p class="movie-card-synopsis">
+                Crepúsculo foi adaptado do best seller homônimo e retorna aos cinemas brasileiros 18 anos após a estreia e incríveis US$ 399,9 milhões faturados mundo afora. Uma chance incrível de conferir na sala escura, e telona do Kinoplex, como tudo começou na saga de Bella Swan (Kristen Stewart). Ao mudar-se para uma pequena cidade, a jovem se apaixona por Edward Cullen (Robert Pattinson), membro de uma misteriosa família, e acaba envolvida em uma complicada trama entre vampiros e lobisomens. Da mesma roteirista das sequências A Saga Crepúsculo: Lua Nova (2009), A Saga Crepúsculo: Eclipse (2010), A Saga Crepúsculo: Amanhecer - Parte 1 (2011) e A Saga Crepúsculo: Amanhecer - Parte 2 (2012).
+            </p>
+
+            <div class="session-group">
+                <h4 class="session-room">Sala 1 - VIP (Dublado)</h4>
+                <div class="movie-times">
+                    <span class="time">14:00</span>
+                    <span class="time">16:30</span>
+                    <span class="time">19:00</span>
+                </div>
+            </div>
+
+            <button class="btn-buy-card btn-open-ticket"
+                    data-filme="Crepúsculo"
+                    data-horarios='["14:00","16:30","19:00"]'
+                    data-sala="Sala 1 - VIP (Dublado)">
+                🎟️ Comprar Ingresso
+            </button>
+        </div>
+    </article>
+
+    <article class="movie-card">
+        <div class="movie-card-poster">
+            <img src="imagens/carrossel/filme2.webp" alt="CARA DE UM, FOCINHO DE OUTRO">
+        </div>
+
+        <div class="movie-card-info">
+            <h3 class="movie-card-title">CARA DE UM, FOCINHO DE OUTRO</h3>
+
+            <div class="movie-tags">
+                <span class="tag age-rating age-12">12</span>
+                <span class="tag">Comédia/Ficção científica</span>
+            </div>
+
+            <p class="movie-card-synopsis">
+                Cara De Um, Focinho De Outro é do mesmo criador e roteirista de Luca, indicado ao Oscar 2022 de Melhor Animação. Mabel é apaixonada pelos bichos. Quando descobre um experimento tecnológico que permite aos humanos se infiltrar no mundo animal, ela se joga na experiência. Na pele e no cérebro de um castor falso, ela fica maravilhada ao ver os animais se comunicando e podendo fazer o mesmo. Após descobrir também que eles têm suas próprias regras, Mabel resolve influenciar a bicharada com ideias revolucionárias, mas a coisa fica totalmente fora do controle. E agora? Da mesma produtora de Toy Story 3, Oscar 2011 de Melhor Animação, e de Os Incríveis 2, indicado ao Oscar 2019 de Melhor Animação.
+            </p>
+
+            <div class="session-group">
+                <h4 class="session-room">Sala 2 - VIP (Dublado)</h4>
+                <div class="movie-times">
+                    <span class="time">16:30</span>
+                </div>
+            </div>
+
+            <button class="btn-buy-card btn-open-ticket"
+                    data-filme="CARA DE UM, FOCINHO DE OUTRO"
+                    data-horarios='["16:30"]'
+                    data-sala="Sala 2 - VIP (Dublado)">
+                🎟️ Comprar Ingresso
+            </button>
+        </div>
+    </article>
+
+    <article class="movie-card">
+        <div class="movie-card-poster">
+            <img src="imagens/carrossel/filme3.jpg" alt="UMA SEGUNDA CHANCE">
+        </div>
+
+        <div class="movie-card-info">
+            <h3 class="movie-card-title">UMA SEGUNDA CHANCE</h3>
+
+            <div class="movie-tags">
+                <span class="tag age-rating age-16">16</span>
+                <span class="tag">Romance </span>
+            </div>
+
+            <p class="movie-card-synopsis">
+                Uma Segunda Chance é da mesma produtora de De Repente 30 (2004) e Do Que as Mulheres Gostam (2000). Kenna (Maika Monroe) e Scotty (Rudy Pankow) foram separados por um trágico acidente. Condenada, Kenna cumpriu anos de prisão, mas o pior ainda estava por vir. Solta, ela volta pra cidade, é rejeitada e descobre que os sogros a querem distante da neta. Agora, além do luto e da condenação, ela não pode conhecer a própria filha. Na medida em que o melhor amigo de Scotty se sensibiliza com a situação dela, um outro sentimento desperta entre eles e o nível de tensão só aumenta. Da mesma roteirista e autora dos best sellers que geraram os filmes Se Não Fosse Você (2025) e É Assim Que Acaba (2024).
+            </p>
+
+            <div class="session-group">
+                <h4 class="session-room">Sala 2 - VIP (Legendado)</h4>
+                <div class="movie-times">
+                    <span class="time">19:30</span>
+                    <span class="time">21:30</span>
+                </div>
+            </div>
+
+            <button class="btn-buy-card btn-open-ticket"
+                    data-filme="UMA SEGUNDA CHANCE"
+                    data-horarios='["19:30","21:30"]'
+                    data-sala="Sala 2 - VIP (Legendado)">
+                🎟️ Comprar Ingresso
+            </button>
+        </div>
+    </article>
+
+    <article class="movie-card">
+        <div class="movie-card-poster">
+            <img src="imagens/carrossel/filme4.jpg" alt="PÂNICO 7">
+        </div>
+
+        <div class="movie-card-info">
+            <h3 class="movie-card-title">PÂNICO 7</h3>
+
+            <div class="movie-tags">
+                <span class="tag age-rating age-16">16</span>
+                <span class="tag">Terror/Mistério</span>
+            </div>
+
+            <p class="movie-card-synopsis">
+                Pânico 7 é do mesmo criador da famosa série de filmes iniciada com Pânico (1996), Pânico 2 (1997), Pânico 3 (2000), Pânico 4 (2011), Pânico (2022) e Pânico VI (2023). Um novo Ghostface aparece na pacata e icônica cidade de Woodsboro. Após ele ligar para Sidney Prescott (Neve Campbell) para anunciar o seu retorno, ela chega a pensar que poderia ser apenas um trote. Quando ele sinaliza que a filha dela (Isabel May) está em seu radar, Sidney entende que precisará retornar para o lugar onde vivenciou seus medos mais sombrios. Uma vez lá, e com a ajuda da veterana Gale Weathers (Courteney Cox), ela superará todos os seus limites para proteger sua família e desmascarar esse novo assassino serial.
+            </p>
+
+            <div class="session-group">
+                <h4 class="session-room">Sala 1 - VIP (Dublado)</h4>
+                <div class="movie-times">
+                    <span class="time">22:00</span>
+                </div>
+            </div>
+
+            <button class="btn-buy-card btn-open-ticket"
+                    data-filme="PÂNICO 7"
+                    data-horarios='["22:00"]'
+                    data-sala="Sala 1 - VIP (Dublado)">
+                🎟️ Comprar Ingresso
+            </button>
+        </div>
+    </article>
+
+    <article class="movie-card">
+        <div class="movie-card-poster">
+            <img src="imagens/carrossel/filme5.jpg" alt="DEVORADORES DE ESTRELAS">
+        </div>
+
+        <div class="movie-card-info">
+            <h3 class="movie-card-title">DEVORADORES DE ESTRELAS</h3>
+
+            <div class="movie-tags">
+                <span class="tag age-rating age-14">12</span>
+                <span class="tag">Terror/Mistério</span>
+            </div>
+
+            <p class="movie-card-synopsis">
+                Devoradores de Estrelas é dos mesmos produtores de Homem-Aranha no Aranhaverso (2018), Oscar de Melhor Animação, e Homem-Aranha: Através do Aranhaverso (2023). Professor de ciências, Ryland Grace (Ryan Gosling) tem um raro conhecimento para desvendar um mistério que está colocando o planeta Terra em risco de extinção. De forma surpreendente, mesmo sem ser um astronauta, ele acaba designado para uma perigosa missão de salvamento solitária no espaço. Uma vez lá, enquanto dava andamento em suas pesquisas, o inesperado acontece e ele mantém contato com um ser desconhecido. Do mesmo roteirista de Perdido em Marte (2018), indicado ao Oscar de Melhor Filme, Roteiro Adaptado e mais cinco indicações.
+            </p>
+
+            <div class="session-group">
+                <h4 class="session-room">Sala 4 - VIP (Legendado)</h4>
+                <div class="movie-times">
+                    <span class="time">22:00</span>
+                </div>
+            </div>
+
+            <button class="btn-buy-card btn-open-ticket"
+                    data-filme="DEVORADORES DE ESTRELAS"
+                    data-horarios='["22:00"]'
+                    data-sala="Sala 4 - VIP (Legendado)">
+                🎟️ Comprar Ingresso
+            </button>
+        </div>
+    </article>
+
+</div>      
+        
+        
+        <section class="midnight-session-section">
+            <div class="midnight-content">
+                <span class="midnight-badge">🦇 Sessão Exclusiva - 23h59</span>
+                
+                <h2 class="midnight-title">PÂNICO 7</h2>
+                
+                <p class="midnight-desc">
+                    O terror retorna a Woodsboro. Você tem coragem de atender o telefone? Garanta o seu lugar na nossa sessão macabra de meia-noite. Vagas limitadíssimas!
+                </p>
+                
+                <div class="midnight-actions">
+                    <button class="btn-buy-midnight btn-open-ticket" 
+                            data-filme="PÂNICO 7"
+                            data-horarios='["23:59"]'
+                            data-sala="Sala 1 - VIP (Dublado)">
+                        🔪 COMPRE SEU INGRESSO
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= MODAL DE COMPRA DE INGRESSOS ======================= -->
+        <div id="ticket-modal" class="ticket-modal-overlay">
+            <div class="ticket-modal-card">
+
+                <div class="ticket-modal-header">
+                    <div>
+                        <span class="ticket-modal-badge">🎟️ Compra de Ingresso</span>
+                        <h2 id="ticket-modal-titulo" class="ticket-modal-title">Título do Filme</h2>
+                    </div>
+                    <span id="close-ticket-modal" class="ticket-close-btn">&times;</span>
+                </div>
+
+                <form id="ticket-form" class="ticket-form" onsubmit="return false;">
+
+                    <div class="ticket-form-row">
+                        <div class="ticket-form-group">
+                            <label for="ticket-nome">Nome Completo</label>
+                            <input type="text" id="ticket-nome" placeholder="Ex: João da Silva" required>
+                        </div>
+                        <div class="ticket-form-group">
+                            <label for="ticket-email">E-mail</label>
+                            <input type="email" id="ticket-email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="ticket-form-row">
+                        <div class="ticket-form-group">
+                            <label for="ticket-data">Data</label>
+                            <input type="date" id="ticket-data" required>
+                        </div>
+                        <div class="ticket-form-group">
+                            <label for="ticket-horario">Horário</label>
+                            <select id="ticket-horario" required>
+                                <!-- Preenchido via JS -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ticket-form-row">
+                        <div class="ticket-form-group">
+                            <label for="ticket-sala">Sala</label>
+                            <input type="text" id="ticket-sala" readonly>
+                        </div>
+                        <div class="ticket-form-group">
+                            <label for="ticket-tipo">Tipo de Ingresso</label>
+                            <select id="ticket-tipo" required>
+                                <option value="">Selecione...</option>
+                                <option value="inteira">Inteira — R$ 32,00</option>
+                                <option value="meia">Meia-entrada — R$ 16,00</option>
+                                <option value="vip">VIP (Poltrona + Combo) — R$ 55,00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ticket-form-row">
+                        <div class="ticket-form-group">
+                            <label for="ticket-qtd">Quantidade de Ingressos</label>
+                            <div class="ticket-qty-control">
+                                <button type="button" id="ticket-qty-minus">−</button>
+                                <span id="ticket-qty-display">1</span>
+                                <button type="button" id="ticket-qty-plus">+</button>
+                            </div>
+                        </div>
+                        <div class="ticket-form-group ticket-total-group">
+                            <label>Total Estimado</label>
+                            <p id="ticket-total" class="ticket-total-value">R$ 0,00</p>
+                        </div>
+                    </div>
+
+                    <hr class="ticket-divider">
+
+                    <p class="ticket-payment-title">Forma de Pagamento</p>
+                    <div class="ticket-payment-options">
+                        <label class="ticket-payment-label">
+                            <input type="radio" name="pagamento" value="cartao"> 💳 Cartão de Crédito/Débito
+                        </label>
+                        <label class="ticket-payment-label">
+                            <input type="radio" name="pagamento" value="pix"> 📱 Pix
+                        </label>
+                        <label class="ticket-payment-label">
+                            <input type="radio" name="pagamento" value="dinheiro"> 💵 Dinheiro na Bilheteria
+                        </label>
+                    </div>
+
+                    <div class="ticket-modal-footer">
+                        <button type="button" id="ticket-cancel-btn" class="ticket-btn-cancel">Cancelar</button>
+                        <button type="submit" id="ticket-submit-btn" class="ticket-btn-confirm">Confirmar Pedido 🎬</button>
+                    </div>
+
+                </form>
+
+                <!-- Tela de Sucesso (escondida por padrão) -->
+                <div id="ticket-success" class="ticket-success" style="display:none;">
+                    <div class="ticket-success-icon">🎉</div>
+                    <h3 class="ticket-success-title">Pedido Recebido!</h3>
+                    <p class="ticket-success-msg">Seu ingresso foi reservado com sucesso.<br>Você receberá a confirmação no e-mail informado.</p>
+                    <button id="ticket-success-close" class="ticket-btn-confirm" style="margin-top:20px;">Fechar</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- =========================================================================== -->                
+
+    
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Puxa o cabeçalho
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Puxa o rodapé
+        fetch('includes/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+
+
+            
+            
+
+        // Seleciona os elementos que vamos manipular
+        // 1. Seleciona os elementos principais
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.slide'); // Pega TODOS os filmes que foram incluídos
+        const dotsContainer = document.getElementById('dots-container'); // A div vazia das bolinhas
+
+        let currentIndex = 0;
+        let autoPlayTimer;
+        let dots = []; // Vai guardar as bolinhas depois que as criarmos
+
+        // 2. NOVA FUNÇÃO: Criar as bolinhas automaticamente
+        function createDots() {
+            slides.forEach((slide, index) => {
+                // Cria um novo elemento <span> do zero
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                
+                // Se for o primeiro filme (índice 0), já deixa a bolinha acesa
+                if (index === 0) {
+                    dot.classList.add('active');
+                }
+                
+                // Adiciona a inteligência do clique direto na bolinha criada
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+                
+                // Coloca a bolinha dentro da div vazia no HTML
+                dotsContainer.appendChild(dot);
+            });
+            
+            // Atualiza a nossa lista de bolinhas agora que elas existem na tela
+            dots = document.querySelectorAll('.dot');
+        }
+
+        // 3. Função que atualiza a tela (Move a trilha e pinta a bolinha correta)
+        function updateCarousel() {
+            if (slides.length === 0) return; /* TRAVA DE SEGURANÇA AQUI */
+
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        // 4. Avança para o próximo slide
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex >= slides.length) { // Agora usa slides.length dinamicamente!
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }
+
+        // 5. Inicia a rotação automática
+        function startAutoPlay() {
+            autoPlayTimer = setInterval(nextSlide, 5000);
+        }
+
+        // 6. Função chamada quando o usuário clica numa bolinha
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            clearInterval(autoPlayTimer); 
+            startAutoPlay();
+        }
+
+        // --- ORDEM DE EXECUÇÃO AO CARREGAR A PÁGINA ---
+        createDots(); // 1º: Cria as bolinhas baseado na quantidade de includes do PHP
+        startAutoPlay(); // 2º: Começa a rodar o carrossel sozinho
+
+
+       // --- CONTROLO DINÂMICO DO MODAL ---
+
+        // Seleciona a "casca" do modal e os elementos de dentro dele que vamos trocar
+        const modal = document.getElementById('synopsis-modal');
+        const tituloModal = document.getElementById('modal-dinamico-titulo');
+        const imagemModal = document.getElementById('modal-dinamico-imagem');
+        const textoModal = document.getElementById('modal-dinamico-texto');
+        const btnFecharModal = document.getElementById('close-modal');
+
+        // Seleciona TODOS os botões de sinopse da página
+        const botoesSinopse = document.querySelectorAll('.btn-sinopse');
+
+        // Para CADA botão encontrado, adicionamos a inteligência do clique
+        botoesSinopse.forEach(botao => {
+            botao.addEventListener('click', function() {
+                // 1. Lê os dados que guardamos no botão clicado
+                const tituloFilme = this.getAttribute('data-titulo');
+                const imagemFilme = this.getAttribute('data-imagem');
+                const textoFilme = this.getAttribute('data-texto');
+
+                // 2. Injeta esses dados dentro do nosso único modal
+                tituloModal.textContent = tituloFilme;
+                imagemModal.src = imagemFilme;
+                textoModal.textContent = textoFilme;
+
+                // 3. Mostra o modal na tela
+                modal.classList.add('open');
+                
+                // Pausa o carrossel (se você estiver usando a função de autoplay)
+                if (typeof autoPlayTimer !== 'undefined') {
+                    clearInterval(autoPlayTimer);
+                }
+            });
+        });
+
+        // Função para fechar o modal
+        function fecharModal() {
+            modal.classList.remove('open');
+            // Reinicia o carrossel
+            if (typeof startAutoPlay === 'function') {
+                startAutoPlay();
+            }
+        }
+
+        // Deteta o clique no botão X
+        btnFecharModal.addEventListener('click', fecharModal);
+
+        // Deteta o clique fora do modal para fechar
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+
+        
+        // Seleciona os elementos básicos do Modal de Vídeo
+        const videoModal = document.getElementById('video-modal');
+        const closeVideoBtn = document.getElementById('close-video-modal'); 
+        const youtubeIframe = document.getElementById('youtube-iframe');
+
+        // 1. Seleciona TODOS os botões de trailer da página (usando a nova classe)
+        const botoesTrailer = document.querySelectorAll('.btn-play-trailer');
+
+        // 2. Para CADA botão encontrado, adicionamos o clique
+        botoesTrailer.forEach(botao => {
+            botao.addEventListener('click', function() {
+                // Pega a ID do vídeo daquele botão específico
+                const videoId = this.getAttribute('data-video');
+                
+                // Injeta no iframe
+                youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                
+                // Abre o modal
+                videoModal.classList.add('open');
+                
+                // Bônus: Pausa o carrossel para o usuário ver o vídeo em paz
+                if (typeof autoPlayTimer !== 'undefined') {
+                    clearInterval(autoPlayTimer);
+                }
+            });
+        });
+
+        // Função para fechar o Modal e PARAR o vídeo
+        function closeVideoModal() {
+            videoModal.classList.remove('open');
+            youtubeIframe.src = ""; // Remove o vídeo
+            
+            // Volta a rodar o carrossel
+            if (typeof startAutoPlay === 'function') {
+                startAutoPlay();
+            }
+        }
+
+        // Fecha ao clicar no X
+        closeVideoBtn.addEventListener('click', closeVideoModal);
+
+        // Fecha ao clicar fora do vídeo
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // --- EFEITO DO MENU FIXO AO ROLAR ---
+        window.addEventListener('scroll', function() {
+            // Como o seu header é carregado via fetch, precisamos procurá-lo na página
+            const header = document.querySelector('.cinema-header');
+            
+            if (header) {
+                // Se rolou mais de 50 pixels para baixo, adiciona a classe escurecida
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    // Se voltou pro topo, tira a classe
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // --- MODAL DE COMPRA DE INGRESSOS ---
+
+        const ticketModal       = document.getElementById('ticket-modal');
+        const ticketModalTitulo = document.getElementById('ticket-modal-titulo');
+        const ticketHorarioSel  = document.getElementById('ticket-horario');
+        const ticketSalaInput   = document.getElementById('ticket-sala');
+        const ticketForm        = document.getElementById('ticket-form');
+        const ticketSuccess     = document.getElementById('ticket-success');
+        const ticketTipoSel     = document.getElementById('ticket-tipo');
+        const ticketQtyDisplay  = document.getElementById('ticket-qty-display');
+        const ticketTotal       = document.getElementById('ticket-total');
+
+        let ticketQty = 1;
+
+        const precosIngresso = { inteira: 32, meia: 16, vip: 55 };
+
+        function atualizarTotal() {
+            const tipo  = ticketTipoSel.value;
+            const preco = precosIngresso[tipo] || 0;
+            const total = (preco * ticketQty).toFixed(2).replace('.', ',');
+            ticketTotal.textContent = preco ? `R$ ${total}` : 'R$ 0,00';
+        }
+
+        ticketTipoSel.addEventListener('change', atualizarTotal);
+
+        document.getElementById('ticket-qty-minus').addEventListener('click', () => {
+            if (ticketQty > 1) { ticketQty--; ticketQtyDisplay.textContent = ticketQty; atualizarTotal(); }
+        });
+
+        document.getElementById('ticket-qty-plus').addEventListener('click', () => {
+            if (ticketQty < 10) { ticketQty++; ticketQtyDisplay.textContent = ticketQty; atualizarTotal(); }
+        });
+
+        function abrirTicketModal(nomeFilme, horarios, sala) {
+            // Define data mínima como hoje
+            const hoje = new Date().toISOString().split('T')[0];
+            document.getElementById('ticket-data').min = hoje;
+            document.getElementById('ticket-data').value = hoje;
+
+            ticketModalTitulo.textContent = nomeFilme;
+            ticketSalaInput.value = sala;
+
+            // Popula os horários
+            ticketHorarioSel.innerHTML = '';
+            horarios.forEach(h => {
+                const opt = document.createElement('option');
+                opt.value = h;
+                opt.textContent = h;
+                ticketHorarioSel.appendChild(opt);
+            });
+
+            // Reseta estado
+            ticketQty = 1;
+            ticketQtyDisplay.textContent = '1';
+            ticketTipoSel.value = '';
+            ticketTotal.textContent = 'R$ 0,00';
+            ticketForm.style.display = '';
+            ticketSuccess.style.display = 'none';
+            document.querySelectorAll('input[name="pagamento"]').forEach(r => r.checked = false);
+
+            ticketModal.classList.add('open');
+            if (typeof autoPlayTimer !== 'undefined') clearInterval(autoPlayTimer);
+        }
+
+        function fecharTicketModal() {
+            ticketModal.classList.remove('open');
+            if (typeof startAutoPlay === 'function') startAutoPlay();
+        }
+
+        // Botões genéricos com data-filme, data-horarios, data-sala
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-open-ticket');
+            if (btn) {
+                const nome     = btn.getAttribute('data-filme') || 'Filme';
+                const horarios = JSON.parse(btn.getAttribute('data-horarios') || '[]');
+                const sala     = btn.getAttribute('data-sala') || '';
+                abrirTicketModal(nome, horarios, sala);
+            }
+        });
+
+        // Botão "Comprar" dentro do modal de sinopse — usa dados do modal atual
+        document.querySelector('.btn-open-ticket-from-synopsis').addEventListener('click', function() {
+            const nome = tituloModal.textContent;
+            // Tenta encontrar o filme na lista global pelo título
+            // Como não temos acesso direto ao array PHP, usamos os cards visíveis
+            let horarios = [];
+            let sala = '';
+            document.querySelectorAll('.btn-open-ticket').forEach(b => {
+                if (b.getAttribute('data-filme') === nome) {
+                    horarios = JSON.parse(b.getAttribute('data-horarios') || '[]');
+                    sala     = b.getAttribute('data-sala') || '';
+                }
+            });
+            fecharModal();
+            abrirTicketModal(nome, horarios, sala);
+        });
+
+        // Fechar ao clicar no X ou fora
+        document.getElementById('close-ticket-modal').addEventListener('click', fecharTicketModal);
+        document.getElementById('ticket-cancel-btn').addEventListener('click', fecharTicketModal);
+        ticketModal.addEventListener('click', e => { if (e.target === ticketModal) fecharTicketModal(); });
+
+        // Submit do formulário
+        ticketForm.addEventListener('submit', function() {
+            const nome     = document.getElementById('ticket-nome').value.trim();
+            const email    = document.getElementById('ticket-email').value.trim();
+            const data     = document.getElementById('ticket-data').value;
+            const horario  = ticketHorarioSel.value;
+            const tipo     = ticketTipoSel.value;
+            const pagto    = document.querySelector('input[name="pagamento"]:checked');
+
+            if (!nome || !email || !data || !horario || !tipo || !pagto) {
+                alert('Por favor, preencha todos os campos antes de confirmar.');
+                return;
+            }
+            ticketForm.style.display = 'none';
+            ticketSuccess.style.display = 'flex';
+        });
+
+        document.getElementById('ticket-success-close').addEventListener('click', fecharTicketModal);
+
+    </script>
+</body>
+</html>
