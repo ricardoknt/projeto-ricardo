@@ -79,10 +79,8 @@ function escapeAttr(value) {
     .replace(/</g, "&lt;");
 }
 
-function renderCarousel(filmes) {
-  return filmes
-    .map(
-      (filme) => `
+function renderSlide(filme) {
+  return `
         <div class="slide" style="--bg-url: url('${filme.bg_imagem}');">
             <div class="slide-background"></div>
             <div class="slide-hero-right"></div>
@@ -120,9 +118,31 @@ function renderCarousel(filmes) {
             <div class="slide-poster-wrapper">
                 <img src="${filme.poster}" alt="Pôster de ${filme.titulo}" class="slide-poster-img">
             </div>
-        </div>`
-    )
-    .join("\n");
+        </div>`;
+}
+
+function renderCarouselSection(filmes) {
+  const slides = filmes.map(renderSlide).join("\n");
+
+  return `<section class="carousel-section" aria-label="Filmes em destaque">
+        <div class="carousel-section-head">
+            <span class="carousel-eyebrow">Programação</span>
+            <h2 class="carousel-section-title">Destaques em cartaz</h2>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-glow" aria-hidden="true"></div>
+            <button type="button" class="carousel-nav carousel-prev" aria-label="Filme anterior">&#8249;</button>
+            <button type="button" class="carousel-nav carousel-next" aria-label="Próximo filme">&#8250;</button>
+
+            <div class="carousel-track" id="track">
+${slides}
+            </div>
+
+            <div class="carousel-fade-bottom" aria-hidden="true"></div>
+            <div class="carousel-dots" id="dots-container"></div>
+        </div>
+    </section>`;
 }
 
 function renderGrade(filmes) {
@@ -175,8 +195,8 @@ ${cards}
 let html = readFileSync(join(dir, "index.php"), "utf8");
 
 html = html.replace(
-  /<\?php include 'includes\/dados_filmes\.php'; \?>\s*<\?php foreach \(\$filmes as \$filme\): \?>[\s\S]*?        <\/div>\s*\n\s*<\?php endforeach; \?>/,
-  renderCarousel(filmes)
+  /<section class="carousel-section"[\s\S]*?<\/section>/,
+  renderCarouselSection(filmes).trim()
 );
 
 html = html.replace(
