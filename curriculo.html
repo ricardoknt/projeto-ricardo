@@ -8,6 +8,11 @@
       content="Currículo de Ricardo Vieira com formação, experiências e habilidades."
     />
     <title>Currículo | Ricardo Vieira</title>
+    <link rel="icon" href="assets/imagens/86f17eee-1312-45ca-8c54-e87ccebf3064.png" type="image/png" />
+    <meta property="og:title" content="Currículo | Ricardo Vieira" />
+    <meta property="og:description" content="Currículo de Ricardo Vieira com formação, experiências e habilidades." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,36 +23,7 @@
     <script src="assets/js/app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="logo-icon" href="index.html" aria-label="Página inicial">
-        <img
-          src="assets/imagens/86f17eee-1312-45ca-8c54-e87ccebf3064.png"
-          alt=""
-          width="40"
-          height="40"
-        />
-      </a>
-
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-        data-menu-toggle
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="main-nav" data-main-nav>
-        <a href="index.html" data-nav-link>Início</a>
-        <a href="index.html#projetos" data-nav-link>Projetos</a>
-        <a href="curriculo.html" data-nav-link>Currículo</a>
-        <a href="blog.html" data-nav-link>Blog</a>
-        <a href="contato.html" data-nav-link>Contato</a>
-      </nav>
-    </header>
+    <div data-site-header></div>
 
     <main>
       <section class="page-hero">
@@ -122,9 +98,6 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>&copy; <span data-current-year></span> Ricardo Vieira. Portfólio pessoal.</p>
-      <a href="contato.html">Entre em contato</a>
-    </footer>
+    <div data-site-footer></div>
   </body>
 </html>
