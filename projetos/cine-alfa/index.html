@@ -10,7 +10,22 @@
 </head>
 <body>
 
-    <div id="header-placeholder"></div>
+    <a class="back-portfolio" href="../../index.html">← Voltar ao portfólio</a>
+
+    <header class="cinema-header">
+        <div class="logo-container">
+            <img src="imagens/logo1.png" alt="Logo Alfa Cinemas" class="logo">
+        </div>
+
+        <nav class="main-menu">
+            <ul>
+                <li><a href="#">Programação</a></li>
+                <li><a href="#">Filmes</a></li>
+                <li><a href="#">Preços</a></li>
+                <li><a href="#">Promoções</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="main-content">
 
@@ -18,10 +33,19 @@
     <img src="imagens/banner.png" alt="A Dobradinha Cinealfa Voltou!" class="banner-img">
     </div>
 
-    <div class="carousel-container">
-    <div class="carousel-track" id="track">
-    
-    
+    <section class="carousel-section" aria-label="Filmes em destaque">
+        <div class="carousel-section-head">
+            <span class="carousel-eyebrow">Programação</span>
+            <h2 class="carousel-section-title">Destaques em cartaz</h2>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-glow" aria-hidden="true"></div>
+            <button type="button" class="carousel-nav carousel-prev" aria-label="Filme anterior">&#8249;</button>
+            <button type="button" class="carousel-nav carousel-next" aria-label="Próximo filme">&#8250;</button>
+
+            <div class="carousel-track" id="track">
+
         <div class="slide" style="--bg-url: url('imagens/carrossel/filme1_a.webp');">
             <div class="slide-background"></div>
             <div class="slide-hero-right"></div>
@@ -219,10 +243,12 @@
                 <img src="imagens/carrossel/filme5.jpg" alt="Pôster de DEVORADORES DE ESTRELAS" class="slide-poster-img">
             </div>
         </div>
+            </div>
 
-    </div>  
-        <div class="carousel-dots" id="dots-container"></div>
-    </div>
+            <div class="carousel-fade-bottom" aria-hidden="true"></div>
+            <div class="carousel-dots" id="dots-container"></div>
+        </div>
+    </section>
 
     <section class="coming-soon-section">
         
@@ -607,29 +633,31 @@
     
     </main>
 
-    <div id="footer-placeholder"></div>
+    <footer class="cinema-footer">
+        <div class="social-section">
+            <h3>SIGA-NOS</h3>
+            <div class="social-buttons">
+                <a href="#" class="btn-social" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="btn-social" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="btn-social" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="btn-social" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+        <hr class="footer-line">
+
+        <div class="legal-section">
+            <div class="copyright">
+                Copyright &copy; 2026 Alfa Cinemas
+            </div>
+            <div class="legal-links">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de uso</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Puxa o cabeçalho
-        fetch('includes/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        // Puxa o rodapé
-        fetch('includes/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-
-
-
-            
-            
-
-        // Seleciona os elementos que vamos manipular
         // 1. Seleciona os elementos principais
         const track = document.querySelector('.carousel-track');
         const slides = document.querySelectorAll('.slide'); // Pega TODOS os filmes que foram incluídos
@@ -682,6 +710,26 @@
             }
             updateCarousel();
         }
+
+        function prevSlide() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            }
+            updateCarousel();
+        }
+
+        document.querySelector('.carousel-prev')?.addEventListener('click', () => {
+            prevSlide();
+            clearInterval(autoPlayTimer);
+            startAutoPlay();
+        });
+
+        document.querySelector('.carousel-next')?.addEventListener('click', () => {
+            nextSlide();
+            clearInterval(autoPlayTimer);
+            startAutoPlay();
+        });
 
         // 5. Inicia a rotação automática
         function startAutoPlay() {
@@ -806,7 +854,6 @@
 
         // --- EFEITO DO MENU FIXO AO ROLAR ---
         window.addEventListener('scroll', function() {
-            // Como o seu header é carregado via fetch, precisamos procurá-lo na página
             const header = document.querySelector('.cinema-header');
             
             if (header) {
