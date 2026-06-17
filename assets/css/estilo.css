@@ -412,6 +412,18 @@ h3 {
   margin: 18px 0 0;
 }
 
+.project-link {
+  margin-top: 20px;
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  background: var(--cinza);
+  color: var(--branco);
+}
+
 .project-body dt {
   color: var(--preto);
   font-size: 0.82rem;
