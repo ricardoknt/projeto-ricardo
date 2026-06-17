@@ -1,0 +1,730 @@
+/* ════════════════════════════════════════════════
+   style.css — Byte Burger Cardápio Digital
+   Autor: Byte Burger
+   Descrição: Estilos globais, componentes e layout
+════════════════════════════════════════════════ */
+
+
+/* ────────────────────────────────────────────────
+   1. VARIÁVEIS (Custom Properties)
+──────────────────────────────────────────────── */
+:root {
+  /* Cores — Tema Escuro (padrão) */
+  --bg:          #0d0d0d;
+  --surface:     #161616;
+  --card:        #1c1c1c;
+  --border:      #2a2a2a;
+  --accent:      #ff5c00;
+  --accent2:     #ffb800;
+  --text:        #f0ece4;
+  --muted:       #7a7572;
+  --price:       #ff5c00;
+  --badge-bg:    rgba(255, 92, 0, 0.15);
+  --success:     #32c85a;
+
+  /* Espaçamentos e formas */
+  --radius:      18px;
+  --padding-x:   clamp(16px, 5vw, 64px);
+
+  /* Sombras */
+  --shadow:      0 8px 40px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+
+  /* Transição padrão */
+  --transition:  0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tema Claro — ativado via data-theme="light" no <html> */
+[data-theme="light"] {
+  --bg:       #faf7f2;
+  --surface:  #f0ece4;
+  --card:     #ffffff;
+  --border:   #e0d9cf;
+  --text:     #1a1510;
+  --muted:    #8a827c;
+  --shadow:   0 8px 40px rgba(0, 0, 0, 0.10);
+}
+
+
+/* ────────────────────────────────────────────────
+   2. RESET & BASE
+──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ────────────────────────────────────────────────
+   3. UTILITÁRIOS
+──────────────────────────────────────────────── */
+.hidden {
+  display: none !important;
+}
+
+
+/* ────────────────────────────────────────────────
+   4. ANIMAÇÕES (Keyframes)
+──────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ────────────────────────────────────────────────
+   5. HEADER
+──────────────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 70px;
+  padding: 0 var(--padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  transition: background var(--transition);
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 88px;
+  height: 53px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+
+.logo-text h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 4vw, 30px);
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.logo-text span {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.open-badge {
+  background: rgba(50, 200, 90, 0.15);
+  color: #32c85a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(50, 200, 90, 0.25);
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all var(--transition);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  transform: rotate(20deg);
+}
+
+
+/* ────────────────────────────────────────────────
+   6. HERO
+──────────────────────────────────────────────── */
+.hero {
+  padding: clamp(48px, 10vw, 100px) var(--padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradiente decorativo de fundo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 80% at 70% 50%,
+    rgba(255, 92, 0, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.hero-text {
+  flex: 1 1 300px;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 92, 0, 0.3);
+  margin-bottom: 18px;
+}
+
+.hero-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 10vw, 110px);
+  line-height: 0.92;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+/* Palavra em destaque — contorno laranja */
+.hero-text h2 em {
+  font-style: normal;
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+}
+
+.hero-text p {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.stat strong {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--text);
+  display: block;
+}
+
+.stat small {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-burger {
+  flex-shrink: 0;
+  max-width: clamp(200px, 38vw, 420px);
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(255, 92, 0, 0.35));
+}
+
+.hero-burger img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* ────────────────────────────────────────────────
+   7. BARRA DE FILTROS
+──────────────────────────────────────────────── */
+.filter-bar {
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+  padding: 20px var(--padding-x);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  transition: background var(--transition);
+}
+
+.filter-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 6px;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border-radius: 40px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 92, 0, 0.35);
+}
+
+
+/* ────────────────────────────────────────────────
+   8. CONTEÚDO PRINCIPAL
+──────────────────────────────────────────────── */
+main {
+  padding: 0 var(--padding-x) 80px;
+}
+
+/* ── Seção de categoria ── */
+.menu-section {
+  padding-top: 60px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-icon {
+  font-size: 28px;
+}
+
+.section-header h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 6vw, 52px);
+  letter-spacing: 1px;
+}
+
+.section-count {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+
+/* ────────────────────────────────────────────────
+   9. GRID DE CARDS
+──────────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 22px;
+}
+
+
+/* ────────────────────────────────────────────────
+   10. CARD DE PRODUTO
+──────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: fadeUp 0.4s ease both;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 0 1px var(--accent);
+}
+
+/* Imagem do card */
+.card-img {
+  height: 190px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.07);
+}
+
+/* Badge de destaque sobre a imagem */
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Corpo do card */
+.card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.card-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+/* Rodapé do card: preço + botão */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.card-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: var(--price);
+  letter-spacing: 0.5px;
+}
+
+.card-price small {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-right: 2px;
+}
+
+/* Botão de adicionar */
+.add-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  transition: all var(--transition);
+}
+
+.add-btn:hover {
+  background: var(--accent2);
+  transform: scale(1.12);
+}
+
+
+/* ────────────────────────────────────────────────
+   11. FOOTER
+──────────────────────────────────────────────── */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: clamp(40px, 7vw, 72px) var(--padding-x) 32px;
+  transition: background var(--transition);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-col h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.footer-brand .logo-text h1 {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.65;
+}
+
+/* Itens de contato */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  color: var(--accent);
+}
+
+.contact-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Links de redes sociais */
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  transition: all var(--transition);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.social-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Linhas de horário */
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hours-row span:last-child {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Rodapé inferior */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* ────────────────────────────────────────────────
+   12. BOTÃO FLUTUANTE WHATSAPP
+──────────────────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  transition: transform var(--transition);
+}
+
+.wa-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.wa-float:hover {
+  transform: scale(1.08);
+}
+
+
+/* ────────────────────────────────────────────────
+   13. RESPONSIVIDADE
+──────────────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: clamp(48px, 12vw, 80px);
+  }
+
+  .filter-bar {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-stats {
+    gap: 20px;
+  }
+
+  .open-badge {
+    display: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
