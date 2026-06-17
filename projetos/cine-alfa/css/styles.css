@@ -1,0 +1,2968 @@
+/* style.css */
+
+/* Reset básico para remover margens padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+/* --- CONFIGURAÇÃO DA PÁGINA INTEIRA --- */
+body {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em coluna (um embaixo do outro) */
+    min-height: 100vh; /* Garante que a página tenha no mínimo 100% da altura do monitor (Viewport Height) */
+    margin: 0; /* Remove as margens brancas padrão do navegador */
+    background-color: #111111; /* Fundo escuro geral para o site de cinema */
+    color: #ffffff; /* Texto branco como padrão para o fundo escuro */
+
+    /* A MÁGICA DA COMPENSAÇÃO AQUI */
+    /* Como o menu tem 70px de altura, empurramos o site 70px para baixo 
+       para nada ficar escondido atrás dele! */
+    padding-top: 70px;
+
+}
+
+/* --- A ÁREA DO MEIO (Onde entrarão os filmes) --- */
+.main-content {
+    flex: 1; /* A mágica acontece aqui: isso faz o meio "esticar" e ocupar todo o espaço vazio, empurrando o rodapé para o final */
+    
+    /* Dicas visuais temporárias para demarcar o espaço na sala de aula: */
+    
+    margin: 20px 50px; /* Descola um pouco das bordas laterais para alinhar com o menu */
+    border-radius: 10px; /* Cantos arredondados suaves */
+}
+
+
+
+
+
+
+/* --- Estilo principal do cabeçalho --- */
+.cinema-header {
+    height: 70px; /* Altura MENU */
+    background: linear-gradient(90deg, #090202, #1f0300);
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 0 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    gap: 250px;
+    
+    /* AS 4 LINHAS QUE FIXAM O MENU */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 900; /* Fica acima do site, mas abaixo do Modal de Vídeo (que tem 9999) */
+    
+    transition: background 0.4s ease, box-shadow 0.4s ease; /* Suavidade para o JS abaixo */
+}
+
+/* Classe ativada pelo JavaScript quando o usuário rola a página */
+.cinema-header.scrolled {
+    background: linear-gradient(90deg, #050101, #120200); /* Fica um pouco mais escuro */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9); /* Sombra mais forte */
+}
+
+/* Cria a linha colorida na parte inferior do header */
+.cinema-header::after {
+    content: ''; /* Necessário para o pseudo-elemento existir */
+    position: absolute; /* Permite mover a linha livremente dentro do header */
+    bottom: 0; /* Cola a linha no final (fundo) do header */
+    left: 0; /* Começa do canto esquerdo */
+    width: 100%; /* Ocupa 100% da largura da tela */
+    height: 4px; /* A espessura da linha */
+    
+    /* O gradiente com as cores do arco-íris igual ao da imagem */
+    background: linear-gradient(to right, 
+        #ff0000, /* Vermelho */
+        #ff7f00, /* Laranja */
+        #ffff00, /* Amarelo */
+        #00ff00, /* Verde */
+        #00ced1, /* Ciano/Turquesa */
+        #0000ff, /* Azul */
+        #800080, /* Roxo */
+        #ff0000  /* Vermelho novamente no final */
+    );
+}
+
+
+.logo-container {
+    display: flex; /* Garante que a div da logo se comporte bem no flex principal */
+    align-items: center;
+}
+
+/* Controle do tamanho da imagem */
+.logo {
+    max-height: 30px; /* Garante que a logo não estoure os 150px do cabeçalho */
+    width: auto;
+}
+
+/* Organização dos itens do menu */
+.main-menu ul {
+    list-style: none; /* Remove as bolinhas da lista */
+    display: flex;
+    gap: 30px; /* Espaçamento entre os botões */
+}
+
+/* Estilo dos links do menu */
+.main-menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    /* text-transform: uppercase; removido */ 
+    padding: 10px 15px;
+    border-radius: 8px; /* Bordas arredondadas nos botões */
+    transition: all 0.3s ease; /* Animação suave para o hover */
+}
+
+/* Efeito ao passar o mouse por cima (Vibrante) */
+.main-menu a:hover {
+    background-color: #FFD700; /* Fundo amarelo vibrante/dourado */
+    color: #111111; /* Texto escuro para dar contraste */
+    box-shadow: 0 0 15px #FFD700; /* Efeito de "neon/brilho" ao redor do botão */
+    transform: scale(1.05); /* Faz o botão crescer levemente */
+}
+
+/* --- BANNER PROMOCIONAL (Full-Width com Fundo Combinando) --- */
+.banner-container {
+    width: 100%; /* Mantém o full-width */
+    height: 4cm; /* A MÁGICA FOI MOVIDA PARA CÁ: Define a altura da área total do banner */
+    
+    /* COR DE FUNDO COMBINANDO */
+    background-color: #0a0000; /* Um bordô profundo e rico para combinar com o veludo */
+    
+    display: flex;
+    justify-content: center; /* Centraliza a imagem horizontalmente se sobrar espaço nas laterais */
+    align-items: center; /* Centraliza a imagem verticalmente */
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    overflow: hidden; /* Garante que nada transborde */
+}
+
+.banner-img {
+    height: 100%; /* Faz a imagem ocupar toda a altura do container (4cm) */
+    width: auto; /* A largura se ajusta proporcionalmente para não distorcer */
+    display: block;
+    
+    /* Garante que a imagem se encaixe sem cortes e sem distorção, 
+       permitindo que a cor de fundo do container apareça onde for necessário. */
+    object-fit: contain; 
+}
+
+/* --- Estilo do Carrossel de Filmes --- */
+.carousel-container {
+    width: 100%;
+    min-height: 450px;
+    overflow: hidden;
+}
+
+.carousel-item {
+    min-height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Mantém o poster principal central */
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- CAMADA 1: FUNDO BORRADO TOTAL (Para Profundidade Atmosférica) --- */
+.slide-background {
+    position: absolute;
+    inset: -5%; /* top, left, right, bottom */
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    
+    /* Muito borrado e sutil */
+    filter: blur(25px) brightness(0.25); 
+    z-index: 1;
+}
+
+/* --- CAMADA 2 (NOVA): HERO MAIOR À DIREITA (A Nova Camada que você pediu) --- */
+.slide-hero-right {
+    position: absolute;
+    top: -10%; /* Ligeiramente mais alta para efeito flutuante */
+    right: -15%; /* Ligeiramente fora da tela à direita */
+    width: 70%; /* Maior do que a div principal, pegando toda a metade direita */
+    height: 120%; /* Maior do que a altura para flutuar */
+    
+    background-image: var(--bg-url);
+    /* Como é uma cópia do pôster vertical, usamos cover para preencher a div grande */
+    background-size: cover; 
+    background-position: right top; /* Alinha a imagem à direita e topo */
+    background-repeat: no-repeat;
+    
+    /* A MÁGICA: Totalmente nítida, mas semi-transparente para não ofuscar o poster principal */
+    filter: blur(0px) brightness(0.65); /* Nítida e ligeiramente mais escura */
+    opacity: 0.5; /* Fica como um fantasma ou marca d'água grande ao fundo */
+    z-index: 2; /* Camada intermediária */
+}
+
+
+/* Adicionando um degradê sutil na nova camada para que ela suma para a esquerda */
+.slide-hero-right::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #141414 0%, rgba(20, 20, 20, 0) 100%);
+}
+
+/* --- PAGINAÇÃO (BOLINHAS) --- */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px; /* Distância do fundo do carrossel */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza perfeitamente no meio da tela */
+    display: flex;
+    gap: 12px; /* Espaço entre as bolinhas */
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4); /* Bolinha meio transparente */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* Sombrinha para aparecer bem sobre os filmes */
+}
+
+/* Efeito ao passar o mouse */
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Bolinha do filme que está aparecendo na tela agora */
+.dot.active {
+    background-color: #fff; /* Fica totalmente branca */
+    transform: scale(1.3); /* Fica um pouquinho maior que as outras */
+}
+
+
+
+/* --- CAMADA 4: INFORMAÇÕES DO FILME (ESQUERDA) --- */
+.slide-info-left {
+    position: absolute;
+    left: 8%; /* Descola um pouco da borda esquerda */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    z-index: 4; /* Fica acima do fundo borrado e da camada da direita */
+    
+    width: 35%; /* Limita a largura para não bater no poster central */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre o título, as tags e os horários */
+    
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Sombra para o texto não sumir em fundos claros */
+}
+
+.movie-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+
+
+/* --- TAGS (Censura, Sala, Dublado/Legendado) --- */
+.movie-tags {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.tag {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 3px 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: none; /* Tira o text-shadow herdado */
+    text-shadow: none;
+}
+
+/* Exemplo de cor para censura 12 anos (Amarelo) */
+.age-12 { background-color: #e5a90d; border-color: #e5a90d; color: #000; }
+.age-Livre { background-color: #0d8a43; border-color: #0d8a43; color: #fff; }
+.age-16 { background-color: #d12121; border-color: #d12121; color: #fff; }
+
+/* --- HORÁRIOS --- */
+.movie-sessions-title {
+    font-size: 1rem;
+    margin: 10px 0 0 0;
+    color: #cccccc;
+}
+
+.movie-times {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap; /* Se tiver muitos horários, cai para a linha de baixo */
+}
+
+.time {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffffff;
+    padding: 8px 18px;
+    border-radius: 20px; /* Formato de pílula arredondada */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: none;
+}
+
+/* Efeito ao passar o mouse no horário */
+.time:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* --- BOTÕES DE AÇÃO (Trailer e Sinopse) --- */
+.movie-actions {
+    display: flex;
+    gap: 15px; /* Espaço entre os dois botões */
+    margin-top: 15px; /* Descola os botões dos horários */
+}
+
+/* Botão Vermelho de Trailer */
+.btn-trailer {
+    background-color: #E50914; /* Vermelho vivo, chama a atenção */
+    color: #ffffff;
+    text-decoration: none; /* Tira o sublinhado do link */
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone (▶) e o texto */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4); /* Sombra vermelha suave */
+}
+
+.btn-trailer:hover {
+    background-color: #b20710; /* Escurece um pouco ao passar o rato */
+    transform: scale(1.05); /* Efeito de crescer */
+}
+
+/* Botão Transparente de Sinopse */
+.btn-sinopse {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente escuro */
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Borda branca suave */
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sinopse:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff; /* Borda fica totalmente branca */
+    transform: scale(1.05);
+}
+
+
+
+
+/* --- ESTILOS DO MODAL (Glassmorphism & Elegância) --- */
+
+/* A Sobreposição (Overlay) - Escurece e borra o fundo do site */
+.modal-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* O Cartão do Modal (A Janela em si) */
+.modal-card {
+    background: rgba(20, 20, 20, 0.7); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(20px); /* Vidro fosco mais intenso */
+    border: 1px solid rgba(255, 0, 0, 0.3); /* Borda vermelha suave (glow) */
+    border-radius: 12px;
+    padding: 30px;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0 0 40px rgba(229, 9, 20, 0.3); /* Brilho vermelho suave */
+    transform: translateY(-30px); /* Começa ligeiramente acima */
+    transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estado Aberto (Classes aplicadas via JS) */
+.modal-overlay.open { opacity: 1; visibility: visible; pointer-events: all; }
+.modal-overlay.open .modal-card { transform: translateY(0); } /* Desce suavemente */
+
+/* Cabeçalho do Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Título Dourado */
+.gold-title {
+    color: gold;
+    font-family: 'Playfair Display', serif; /* Fonte com serifa premium */
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Brilho dourado suave */
+    margin: 0;
+}
+
+/* Botão Fechar 'X' Vermelho */
+.close-btn {
+    color: #d12121; /* Vermelho vibrante */
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px red;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+    transform: scale(1.1);
+}
+
+/* Corpo do Modal (Colunas) */
+.modal-body {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-poster-col { width: 35%; }
+.modal-text-col { width: 65%; display: flex; flex-direction: column; gap: 15px; }
+
+/* Imagem do Pôster (Borda dourada suave) */
+.modal-poster-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid gold;
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+/* Textos da Sinopse */
+.synopsis-heading {
+    color: gold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.synopsis-text {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Rodapé e Botão de Compra */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Botão alinhado à direita */
+    margin-top: 10px;
+}
+
+.modal-cta-button {
+    background: linear-gradient(gold, #e5a90d); /* Degradê dourado-avermelhado */
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-cta-button:hover {
+    background: linear-gradient(#b20710, #E50914); /* Degradê vermelho vivo no hover */
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* --- ESTILOS DO MODAL DE VÍDEO (Estava faltando!) --- */
+.video-modal-overlay {
+    display: none; /* Esconde o vídeo até clicar no botão */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999; /* Garante que fique acima de TUDO no site */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.video-modal-overlay.open {
+    display: flex; /* Mostra o vídeo quando a classe .open é ativada pelo JS */
+}
+
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Proporção 16:9 perfeita para vídeos do YouTube não distorcerem */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.close-video-btn {
+    position: absolute;
+    top: -40px; right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-video-btn:hover {
+    color: #E50914;
+    transform: scale(1.1);
+}
+
+
+
+
+
+/* --- CAMADA 3: POSTER PRINCIPAL (Nítido, Flutuante e Centralizado) --- */
+.slide-poster-wrapper {
+    position: relative;
+    z-index: 3; /* Fica acima de tudo */
+    
+    height: 85%; /* Ligeiramente menor para dar mais destaque ao efeito de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    
+    /* Centralizar o poster na tela inteira */
+    margin: auto; 
+}
+
+.slide-poster-img {
+    height: auto;
+    width: auto;
+    max-width: 80%; /* Evitar pôsteres largos demais */
+    
+    /* Sombra pesada para destacar do fundo */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 1); 
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* --- HOVER EFFECT --- */
+.slide-poster-wrapper:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* --- BANNER EM BREVE (PARALLAX) --- */
+.coming-soon-section {
+    width: 100%;
+    min-height: 500px; /* Usa min-height para acomodar o conteúdo */
+    margin: 40px 0;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o container horizontalmente */
+    overflow: hidden;
+
+    /* MÁGICA DO PARALLAX MANTIDA */
+    /* Substitua prada2-bg.jpg pela imagem de fundo Parallax */
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('../imagens/carrossel/prada2-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+/* NOVO CONTAINER: Organiza as duas colunas */
+.coming-soon-container {
+    display: flex;
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    align-items: center; /* Centraliza o poster e o texto na mesma linha vertical */
+    gap: 40px; /* Espaço entre as colunas */
+    padding: 20px;
+    z-index: 2; /* Fica acima do fundo paralaix */
+}
+
+/* COLUNA ESQUERDA (Texto) */
+.coming-soon-text-col {
+    flex: 1; /* Ocupa o espaço disponível */
+    text-align: left; /* Texto alinhado à esquerda agora */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os botões e emblemas à esquerda */
+}
+
+/* COLUNA DIREITA (Pôster) */
+.coming-soon-poster-col {
+    flex-basis: 35%; /* Ocupa cerca de 35% da largura total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* REVISÃO DOS ELEMENTOS ORIGINAIS (Adaptação para alinhamento esquerdo) */
+
+.coming-soon-badge {
+    background-color: #E50914;
+    color: white;
+    padding: 6px 18px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4);
+}
+
+.coming-soon-title {
+    font-size: 3.5rem; /* Reduzi um pouco para caber ao lado do poster */
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif; /* Fonte elegante */
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+}
+
+.coming-soon-desc {
+    font-size: 1.1rem; /* Reduzi um pouco */
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+.btn-trailer-outline {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 2px solid white;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.btn-trailer-outline:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* --- ESTILO DO NOVO PÔSTER EM DESTAQUE --- */
+.coming-soon-poster-img {
+    width: 100%; /* Ocupa toda a largura da coluna 35% */
+    height: auto;
+    border-radius: 12px; /* Cantos arredondados no poster */
+    border: 3px solid white; /* Borda branca grossa, tipo moldura */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.9); /* Sombra pesada para dar profundidade e destaque */
+    object-fit: contain; /* Garante que o poster não corte */
+    transition: transform 0.3s ease; /* Prepara para o hover effect */
+}
+
+/* Pequeno efeito ao passar o mouse no pôster */
+.coming-soon-poster-col:hover .coming-soon-poster-img {
+    transform: translateY(-5px) scale(1.02);
+}
+
+
+
+
+
+
+
+/* --- BANNER DE VENDAS (Filme em Cartaz) --- */
+.promo-sales-section {
+    width: 100%;
+    min-height: 400px; /* Um pouco menor que o Em Breve para não cansar */
+    margin: 40px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* Fundo com a imagem do filme (Substitua a imagem abaixo) */
+    background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.9)), url('../imagens/carrossel/crepusculo-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito parallax mantido */
+    
+    /* Linhas superior e inferior para destacar a área de compra */
+    border-top: 1px solid rgba(229, 9, 20, 0.3);
+    border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+}
+
+.promo-sales-content {
+    z-index: 2;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* Crachá Dourado */
+.promo-badge {
+    background-color: gold;
+    color: black;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.promo-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+}
+
+.promo-desc {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* O Botão de Comprar (Destaque Máximo - Formato Pílula) */
+.btn-buy-tickets {
+    background: linear-gradient(45deg, #E50914, #b20710); /* Vermelho Netflix */
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px; /* Arredondado para contrastar com botões quadrados */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(229, 9, 20, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-buy-tickets:hover {
+    transform: scale(1.05) translateY(-3px); /* Levanta e cresce levemente */
+    box-shadow: 0 15px 25px rgba(229, 9, 20, 0.8);
+    background: linear-gradient(45deg, #ff0f1a, #E50914); /* Fica mais claro */
+}
+
+
+
+/* --- SEÇÃO: EM CARTAZ (Grade de Filmes) --- */
+
+.section-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    border-left: 6px solid #E50914; /* Barrinha vermelha charmosa do lado do título */
+    padding-left: 15px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espaço entre um filme e outro */
+}
+
+/* O Cartão do Filme */
+.movie-card {
+    display: flex;
+    background-color: #1a1a1a; /* Fundo levemente mais cinza para destacar do body preto */
+    border-radius: 12px;
+    overflow: hidden; /* Não deixa a foto vazar das bordas arredondadas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #333; /* Borda bem sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o cartão inteiro */
+.movie-card:hover {
+    transform: translateY(-5px); /* Dá um pulinho */
+    box-shadow: 0 10px 25px rgba(229, 9, 20, 0.15); /* Sombra avermelhada bem leve */
+    border-color: #555;
+}
+
+/* A Imagem do Cartão */
+.movie-card-poster {
+    width: 250px; /* Largura fixa do pôster */
+    flex-shrink: 0; /* Impede que o texto amasse a imagem */
+}
+
+.movie-card-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* A Área de Texto do Cartão */
+.movie-card-info {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1; /* Ocupa todo o espaço restante da direita */
+}
+
+.movie-card-title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+}
+
+.movie-card-synopsis {
+    color: #cccccc;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 15px 0 20px 0;
+}
+
+/* Caixas de Horários e Salas */
+.session-group {
+    margin-bottom: 15px;
+    background-color: #111111; /* Fundo mais escuro para a sala */
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #444; /* Borda cinza para separar visualmente as salas */
+}
+
+.session-room {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Botão Comprar do Cartão */
+.btn-buy-card {
+    align-self: flex-start; /* Impede que o botão ocupe a largura inteira da div */
+    background-color: #E50914;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.btn-buy-card:hover {
+    background-color: #b20710;
+    transform: scale(1.05);
+}
+
+
+
+/* --- SESSÃO DA MEIA-NOITE (TERROR) --- */
+.midnight-session-section {
+    width: 100%;
+    min-height: 450px;
+    margin: 60px 0 0 0; /* Afasta bem da grade de filmes */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* MÁGICA DO TERROR: Gradiente escurecendo a sua imagem */
+    /* ATENÇÃO: Substitua 'sua_imagem_panico.jpg' pelo nome do seu arquivo */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(15, 0, 0, 0.9)), url('../imagens/carrossel/meianoite.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantém o efeito parallax épico */
+    
+    border-top: 2px solid #8a0303; /* Borda superior vermelho-sangue */
+    border-bottom: 2px solid #8a0303;
+}
+
+.midnight-content {
+    z-index: 2;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* Crachá Temático */
+.midnight-badge {
+    background-color: #8a0303; 
+    color: white;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(138, 3, 3, 0.6); /* Brilho vermelho */
+}
+
+/* Título com Sombra Sangrenta */
+.midnight-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 15px rgba(255, 0, 0, 0.6); /* Efeito luminoso vermelho no texto */
+}
+
+.midnight-desc {
+    font-size: 1.3rem;
+    color: #cccccc;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Botão Macabro */
+.btn-buy-midnight {
+    background: #000000; /* Fundo preto */
+    color: #ff3333; /* Texto vermelho vivo */
+    border: 2px solid #8a0303;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(138, 3, 3, 0.3);
+}
+
+.btn-buy-midnight:hover {
+    background: #8a0303; /* Fica todo vermelho ao passar o mouse */
+    color: #ffffff; /* Texto branco */
+    border-color: #ff0000; /* Borda acende */
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.8);
+}
+
+
+
+
+
+/* Estilos do Rodapé (Footer) */
+.cinema-footer {
+    background-color: #111111; /* Fundo bem escuro para contrastar com o cabeçalho */
+    color: #ffffff;
+    padding: 40px 50px 20px; /* Espaçamento interno (topo, laterais, fundo) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Secção das Redes Sociais */
+.social-section {
+    text-align: center; /* Centraliza o "SIGA-NOS" e os botões */
+    margin-bottom: 30px;
+}
+
+.social-section h3 {
+    font-size: 1.2rem;
+    color: #E50914; /* O mesmo vermelho do cabeçalho para criar identidade visual */
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaço entre os botões sociais */
+}
+
+/* Estilo dos botões sociais */
+.btn-social {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #333333;
+    width: 45px; /* Largura fixa */
+    height: 45px; /* Altura fixa */
+    display: flex; /* Flexbox para centralizar o ícone no meio do botão */
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Transforma o botão num círculo perfeito */
+    font-size: 1.3rem; /* Aumenta um pouco o tamanho do ícone */
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o cursor sobre os botões sociais */
+.btn-social:hover {
+    background-color: #E50914; /* Fica vermelho */
+    transform: translateY(-5px); /* Dá um pequeno "salto" para cima */
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4); /* Sombra vermelha */
+}
+
+/* Linha divisória */
+.footer-line {
+    border: none;
+    height: 1px;
+    background-color: #444444; /* Uma linha cinza discreta */
+    margin: 0 0 20px 0;
+}
+
+/* Secção Inferior (Copyright e Links) */
+.legal-section {
+    display: flex;
+    justify-content: space-between; /* Coloca o copyright à esquerda e os links à direita */
+    align-items: center;
+    font-size: 0.9rem;
+    color: #aaaaaa; /* Texto um pouco mais claro para não chamar tanta atenção */
+}
+
+/* Agrupamento dos links da direita */
+.legal-links {
+    display: flex;
+    gap: 30px;
+}
+
+.legal-links a {
+    text-decoration: none;
+    color: #aaaaaa;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: #ffffff; /* Fica branco ao passar o cursor */
+}
+
+
+/* --- RESPONSIVIDADE (CELULARES E TABLETS) --- */
+
+/* style.css */
+
+/* Reset básico para remover margens padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+/* --- CONFIGURAÇÃO DA PÁGINA INTEIRA --- */
+body {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em coluna (um embaixo do outro) */
+    min-height: 100vh; /* Garante que a página tenha no mínimo 100% da altura do monitor (Viewport Height) */
+    margin: 0; /* Remove as margens brancas padrão do navegador */
+    background-color: #111111; /* Fundo escuro geral para o site de cinema */
+    color: #ffffff; /* Texto branco como padrão para o fundo escuro */
+
+    /* A MÁGICA DA COMPENSAÇÃO AQUI */
+    /* Como o menu tem 70px de altura, empurramos o site 70px para baixo 
+       para nada ficar escondido atrás dele! */
+    padding-top: 70px;
+
+}
+
+/* --- A ÁREA DO MEIO (Onde entrarão os filmes) --- */
+.main-content {
+    flex: 1; /* A mágica acontece aqui: isso faz o meio "esticar" e ocupar todo o espaço vazio, empurrando o rodapé para o final */
+    
+    /* Dicas visuais temporárias para demarcar o espaço na sala de aula: */
+    
+    margin: 20px 50px; /* Descola um pouco das bordas laterais para alinhar com o menu */
+    border-radius: 10px; /* Cantos arredondados suaves */
+}
+
+
+
+
+
+
+/* --- Estilo principal do cabeçalho --- */
+.cinema-header {
+    height: 70px; /* Altura MENU */
+    background: linear-gradient(90deg, #090202, #1f0300);
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 0 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    gap: 250px;
+    
+    /* AS 4 LINHAS QUE FIXAM O MENU */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 900; /* Fica acima do site, mas abaixo do Modal de Vídeo (que tem 9999) */
+    
+    transition: background 0.4s ease, box-shadow 0.4s ease; /* Suavidade para o JS abaixo */
+}
+
+/* Classe ativada pelo JavaScript quando o usuário rola a página */
+.cinema-header.scrolled {
+    background: linear-gradient(90deg, #050101, #120200); /* Fica um pouco mais escuro */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9); /* Sombra mais forte */
+}
+
+/* Cria a linha colorida na parte inferior do header */
+.cinema-header::after {
+    content: ''; /* Necessário para o pseudo-elemento existir */
+    position: absolute; /* Permite mover a linha livremente dentro do header */
+    bottom: 0; /* Cola a linha no final (fundo) do header */
+    left: 0; /* Começa do canto esquerdo */
+    width: 100%; /* Ocupa 100% da largura da tela */
+    height: 4px; /* A espessura da linha */
+    
+    /* O gradiente com as cores do arco-íris igual ao da imagem */
+    background: linear-gradient(to right, 
+        #ff0000, /* Vermelho */
+        #ff7f00, /* Laranja */
+        #ffff00, /* Amarelo */
+        #00ff00, /* Verde */
+        #00ced1, /* Ciano/Turquesa */
+        #0000ff, /* Azul */
+        #800080, /* Roxo */
+        #ff0000  /* Vermelho novamente no final */
+    );
+}
+
+
+.logo-container {
+    display: flex; /* Garante que a div da logo se comporte bem no flex principal */
+    align-items: center;
+}
+
+/* Controle do tamanho da imagem */
+.logo {
+    max-height: 30px; /* Garante que a logo não estoure os 150px do cabeçalho */
+    width: auto;
+}
+
+/* Organização dos itens do menu */
+.main-menu ul {
+    list-style: none; /* Remove as bolinhas da lista */
+    display: flex;
+    gap: 30px; /* Espaçamento entre os botões */
+}
+
+/* Estilo dos links do menu */
+.main-menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    /* text-transform: uppercase; removido */ 
+    padding: 10px 15px;
+    border-radius: 8px; /* Bordas arredondadas nos botões */
+    transition: all 0.3s ease; /* Animação suave para o hover */
+}
+
+/* Efeito ao passar o mouse por cima (Vibrante) */
+.main-menu a:hover {
+    background-color: #FFD700; /* Fundo amarelo vibrante/dourado */
+    color: #111111; /* Texto escuro para dar contraste */
+    box-shadow: 0 0 15px #FFD700; /* Efeito de "neon/brilho" ao redor do botão */
+    transform: scale(1.05); /* Faz o botão crescer levemente */
+}
+
+/* --- BANNER PROMOCIONAL (Full-Width com Fundo Combinando) --- */
+.banner-container {
+    width: 100%; /* Mantém o full-width */
+    height: 4cm; /* A MÁGICA FOI MOVIDA PARA CÁ: Define a altura da área total do banner */
+    
+    /* COR DE FUNDO COMBINANDO */
+    background-color: #0a0000; /* Um bordô profundo e rico para combinar com o veludo */
+    
+    display: flex;
+    justify-content: center; /* Centraliza a imagem horizontalmente se sobrar espaço nas laterais */
+    align-items: center; /* Centraliza a imagem verticalmente */
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    overflow: hidden; /* Garante que nada transborde */
+}
+
+.banner-img {
+    height: 100%; /* Faz a imagem ocupar toda a altura do container (4cm) */
+    width: auto; /* A largura se ajusta proporcionalmente para não distorcer */
+    display: block;
+    
+    /* Garante que a imagem se encaixe sem cortes e sem distorção, 
+       permitindo que a cor de fundo do container apareça onde for necessário. */
+    object-fit: contain; 
+}
+
+/* --- Estilo do Carrossel de Filmes --- */
+.carousel-container {
+    width: 100%;
+    height: 14cm; /* Aumentei um pouco para valorizar as camadas */
+    position: relative;
+    overflow: hidden;
+    background-color: #141414; /* Fundo padrão Netflix */
+    margin-top: 10px;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Mantém o poster principal central */
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- CAMADA 1: FUNDO BORRADO TOTAL (Para Profundidade Atmosférica) --- */
+.slide-background {
+    position: absolute;
+    inset: -5%; /* top, left, right, bottom */
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    
+    /* Muito borrado e sutil */
+    filter: blur(25px) brightness(0.25); 
+    z-index: 1;
+}
+
+/* --- CAMADA 2 (NOVA): HERO MAIOR À DIREITA (A Nova Camada que você pediu) --- */
+.slide-hero-right {
+    position: absolute;
+    top: -10%; /* Ligeiramente mais alta para efeito flutuante */
+    right: -15%; /* Ligeiramente fora da tela à direita */
+    width: 70%; /* Maior do que a div principal, pegando toda a metade direita */
+    height: 120%; /* Maior do que a altura para flutuar */
+    
+    background-image: var(--bg-url);
+    /* Como é uma cópia do pôster vertical, usamos cover para preencher a div grande */
+    background-size: cover; 
+    background-position: right top; /* Alinha a imagem à direita e topo */
+    background-repeat: no-repeat;
+    
+    /* A MÁGICA: Totalmente nítida, mas semi-transparente para não ofuscar o poster principal */
+    filter: blur(0px) brightness(0.65); /* Nítida e ligeiramente mais escura */
+    opacity: 0.5; /* Fica como um fantasma ou marca d'água grande ao fundo */
+    z-index: 2; /* Camada intermediária */
+}
+
+
+/* Adicionando um degradê sutil na nova camada para que ela suma para a esquerda */
+.slide-hero-right::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #141414 0%, rgba(20, 20, 20, 0) 100%);
+}
+
+/* --- PAGINAÇÃO (BOLINHAS) --- */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px; /* Distância do fundo do carrossel */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza perfeitamente no meio da tela */
+    display: flex;
+    gap: 12px; /* Espaço entre as bolinhas */
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4); /* Bolinha meio transparente */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* Sombrinha para aparecer bem sobre os filmes */
+}
+
+/* Efeito ao passar o mouse */
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Bolinha do filme que está aparecendo na tela agora */
+.dot.active {
+    background-color: #fff; /* Fica totalmente branca */
+    transform: scale(1.3); /* Fica um pouquinho maior que as outras */
+}
+
+
+
+/* --- CAMADA 4: INFORMAÇÕES DO FILME (ESQUERDA) --- */
+.slide-info-left {
+    position: absolute;
+    left: 8%; /* Descola um pouco da borda esquerda */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    z-index: 4; /* Fica acima do fundo borrado e da camada da direita */
+    
+    width: 35%; /* Limita a largura para não bater no poster central */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre o título, as tags e os horários */
+    
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Sombra para o texto não sumir em fundos claros */
+}
+
+.movie-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+
+
+/* --- TAGS (Censura, Sala, Dublado/Legendado) --- */
+.movie-tags {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.tag {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 3px 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: none; /* Tira o text-shadow herdado */
+    text-shadow: none;
+}
+
+/* Exemplo de cor para censura 12 anos (Amarelo) */
+.age-12 { background-color: #e5a90d; border-color: #e5a90d; color: #000; }
+.age-Livre { background-color: #0d8a43; border-color: #0d8a43; color: #fff; }
+.age-16 { background-color: #d12121; border-color: #d12121; color: #fff; }
+
+/* --- HORÁRIOS --- */
+.movie-sessions-title {
+    font-size: 1rem;
+    margin: 10px 0 0 0;
+    color: #cccccc;
+}
+
+.movie-times {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap; /* Se tiver muitos horários, cai para a linha de baixo */
+}
+
+.time {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ffffff;
+    padding: 8px 18px;
+    border-radius: 20px; /* Formato de pílula arredondada */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: none;
+}
+
+/* Efeito ao passar o mouse no horário */
+.time:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* --- BOTÕES DE AÇÃO (Trailer e Sinopse) --- */
+.movie-actions {
+    display: flex;
+    gap: 15px; /* Espaço entre os dois botões */
+    margin-top: 15px; /* Descola os botões dos horários */
+}
+
+/* Botão Vermelho de Trailer */
+.btn-trailer {
+    background-color: #E50914; /* Vermelho vivo, chama a atenção */
+    color: #ffffff;
+    text-decoration: none; /* Tira o sublinhado do link */
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone (▶) e o texto */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4); /* Sombra vermelha suave */
+}
+
+.btn-trailer:hover {
+    background-color: #b20710; /* Escurece um pouco ao passar o rato */
+    transform: scale(1.05); /* Efeito de crescer */
+}
+
+/* Botão Transparente de Sinopse */
+.btn-sinopse {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente escuro */
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Borda branca suave */
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sinopse:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff; /* Borda fica totalmente branca */
+    transform: scale(1.05);
+}
+
+
+
+
+/* --- ESTILOS DO MODAL (Glassmorphism & Elegância) --- */
+
+/* A Sobreposição (Overlay) - Escurece e borra o fundo do site */
+.modal-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* O Cartão do Modal (A Janela em si) */
+.modal-card {
+    background: rgba(20, 20, 20, 0.7); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(20px); /* Vidro fosco mais intenso */
+    border: 1px solid rgba(255, 0, 0, 0.3); /* Borda vermelha suave (glow) */
+    border-radius: 12px;
+    padding: 30px;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0 0 40px rgba(229, 9, 20, 0.3); /* Brilho vermelho suave */
+    transform: translateY(-30px); /* Começa ligeiramente acima */
+    transition: transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estado Aberto (Classes aplicadas via JS) */
+.modal-overlay.open { opacity: 1; visibility: visible; pointer-events: all; }
+.modal-overlay.open .modal-card { transform: translateY(0); } /* Desce suavemente */
+
+/* Cabeçalho do Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Título Dourado */
+.gold-title {
+    color: gold;
+    font-family: 'Playfair Display', serif; /* Fonte com serifa premium */
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Brilho dourado suave */
+    margin: 0;
+}
+
+/* Botão Fechar 'X' Vermelho */
+.close-btn {
+    color: #d12121; /* Vermelho vibrante */
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px red;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+    transform: scale(1.1);
+}
+
+/* Corpo do Modal (Colunas) */
+.modal-body {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-poster-col { width: 35%; }
+.modal-text-col { width: 65%; display: flex; flex-direction: column; gap: 15px; }
+
+/* Imagem do Pôster (Borda dourada suave) */
+.modal-poster-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid gold;
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+/* Textos da Sinopse */
+.synopsis-heading {
+    color: gold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.synopsis-text {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Rodapé e Botão de Compra */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Botão alinhado à direita */
+    margin-top: 10px;
+}
+
+.modal-cta-button {
+    background: linear-gradient(gold, #e5a90d); /* Degradê dourado-avermelhado */
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-cta-button:hover {
+    background: linear-gradient(#b20710, #E50914); /* Degradê vermelho vivo no hover */
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* --- ESTILOS DO MODAL DE VÍDEO (Estava faltando!) --- */
+.video-modal-overlay {
+    display: none; /* Esconde o vídeo até clicar no botão */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999; /* Garante que fique acima de TUDO no site */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.video-modal-overlay.open {
+    display: flex; /* Mostra o vídeo quando a classe .open é ativada pelo JS */
+}
+
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Proporção 16:9 perfeita para vídeos do YouTube não distorcerem */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.close-video-btn {
+    position: absolute;
+    top: -40px; right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-video-btn:hover {
+    color: #E50914;
+    transform: scale(1.1);
+}
+
+
+
+
+
+/* --- CAMADA 3: POSTER PRINCIPAL (Nítido, Flutuante e Centralizado) --- */
+.slide-poster-wrapper {
+    position: relative;
+    z-index: 3; /* Fica acima de tudo */
+    
+    height: 85%; /* Ligeiramente menor para dar mais destaque ao efeito de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    
+    /* Centralizar o poster na tela inteira */
+    margin: auto; 
+}
+
+.slide-poster-img {
+    height: 200%;
+    width: auto;
+    max-width: 80%; /* Evitar pôsteres largos demais */
+    
+    /* Sombra pesada para destacar do fundo */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 1); 
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* --- HOVER EFFECT --- */
+.slide-poster-wrapper:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* --- BANNER EM BREVE (PARALLAX) --- */
+.coming-soon-section {
+    width: 100%;
+    min-height: 500px; /* Usa min-height para acomodar o conteúdo */
+    margin: 40px 0;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o container horizontalmente */
+    overflow: hidden;
+
+    /* MÁGICA DO PARALLAX MANTIDA */
+    /* Substitua prada2-bg.jpg pela imagem de fundo Parallax */
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('../imagens/carrossel/prada2-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+/* NOVO CONTAINER: Organiza as duas colunas */
+.coming-soon-container {
+    display: flex;
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    align-items: center; /* Centraliza o poster e o texto na mesma linha vertical */
+    gap: 40px; /* Espaço entre as colunas */
+    padding: 20px;
+    z-index: 2; /* Fica acima do fundo paralaix */
+}
+
+/* COLUNA ESQUERDA (Texto) */
+.coming-soon-text-col {
+    flex: 1; /* Ocupa o espaço disponível */
+    text-align: left; /* Texto alinhado à esquerda agora */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os botões e emblemas à esquerda */
+}
+
+/* COLUNA DIREITA (Pôster) */
+.coming-soon-poster-col {
+    flex-basis: 35%; /* Ocupa cerca de 35% da largura total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* REVISÃO DOS ELEMENTOS ORIGINAIS (Adaptação para alinhamento esquerdo) */
+
+.coming-soon-badge {
+    background-color: #E50914;
+    color: white;
+    padding: 6px 18px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4);
+}
+
+.coming-soon-title {
+    font-size: 3.5rem; /* Reduzi um pouco para caber ao lado do poster */
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif; /* Fonte elegante */
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+}
+
+.coming-soon-desc {
+    font-size: 1.1rem; /* Reduzi um pouco */
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+.btn-trailer-outline {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 2px solid white;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.btn-trailer-outline:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* --- ESTILO DO NOVO PÔSTER EM DESTAQUE --- */
+.coming-soon-poster-img {
+    width: 100%; /* Ocupa toda a largura da coluna 35% */
+    height: auto;
+    border-radius: 12px; /* Cantos arredondados no poster */
+    border: 3px solid white; /* Borda branca grossa, tipo moldura */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.9); /* Sombra pesada para dar profundidade e destaque */
+    object-fit: contain; /* Garante que o poster não corte */
+    transition: transform 0.3s ease; /* Prepara para o hover effect */
+}
+
+/* Pequeno efeito ao passar o mouse no pôster */
+.coming-soon-poster-col:hover .coming-soon-poster-img {
+    transform: translateY(-5px) scale(1.02);
+}
+
+
+
+
+
+
+
+/* --- BANNER DE VENDAS (Filme em Cartaz) --- */
+.promo-sales-section {
+    width: 100%;
+    min-height: 400px; /* Um pouco menor que o Em Breve para não cansar */
+    margin: 40px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* Fundo com a imagem do filme (Substitua a imagem abaixo) */
+    background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.9)), url('../imagens/carrossel/crepusculo-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito parallax mantido */
+    
+    /* Linhas superior e inferior para destacar a área de compra */
+    border-top: 1px solid rgba(229, 9, 20, 0.3);
+    border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+}
+
+.promo-sales-content {
+    z-index: 2;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* Crachá Dourado */
+.promo-badge {
+    background-color: gold;
+    color: black;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.promo-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+}
+
+.promo-desc {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* O Botão de Comprar (Destaque Máximo - Formato Pílula) */
+.btn-buy-tickets {
+    background: linear-gradient(45deg, #E50914, #b20710); /* Vermelho Netflix */
+    color: white;
+    border: none;
+    padding: 15px 45px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px; /* Arredondado para contrastar com botões quadrados */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(229, 9, 20, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-buy-tickets:hover {
+    transform: scale(1.05) translateY(-3px); /* Levanta e cresce levemente */
+    box-shadow: 0 15px 25px rgba(229, 9, 20, 0.8);
+    background: linear-gradient(45deg, #ff0f1a, #E50914); /* Fica mais claro */
+}
+
+
+
+/* --- SEÇÃO: EM CARTAZ (Grade de Filmes) --- */
+
+.section-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    border-left: 6px solid #E50914; /* Barrinha vermelha charmosa do lado do título */
+    padding-left: 15px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espaço entre um filme e outro */
+}
+
+/* O Cartão do Filme */
+.movie-card {
+    display: flex;
+    background-color: #1a1a1a; /* Fundo levemente mais cinza para destacar do body preto */
+    border-radius: 12px;
+    overflow: hidden; /* Não deixa a foto vazar das bordas arredondadas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #333; /* Borda bem sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o cartão inteiro */
+.movie-card:hover {
+    transform: translateY(-5px); /* Dá um pulinho */
+    box-shadow: 0 10px 25px rgba(229, 9, 20, 0.15); /* Sombra avermelhada bem leve */
+    border-color: #555;
+}
+
+/* A Imagem do Cartão */
+.movie-card-poster {
+    width: 250px; /* Largura fixa do pôster */
+    flex-shrink: 0; /* Impede que o texto amasse a imagem */
+}
+
+.movie-card-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* A Área de Texto do Cartão */
+.movie-card-info {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1; /* Ocupa todo o espaço restante da direita */
+}
+
+.movie-card-title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+}
+
+.movie-card-synopsis {
+    color: #cccccc;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 15px 0 20px 0;
+}
+
+/* Caixas de Horários e Salas */
+.session-group {
+    margin-bottom: 15px;
+    background-color: #111111; /* Fundo mais escuro para a sala */
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #444; /* Borda cinza para separar visualmente as salas */
+}
+
+.session-room {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Botão Comprar do Cartão */
+.btn-buy-card {
+    align-self: flex-start; /* Impede que o botão ocupe a largura inteira da div */
+    background-color: #E50914;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.btn-buy-card:hover {
+    background-color: #b20710;
+    transform: scale(1.05);
+}
+
+
+
+/* --- SESSÃO DA MEIA-NOITE (TERROR) --- */
+.midnight-session-section {
+    width: 100%;
+    min-height: 450px;
+    margin: 60px 0 0 0; /* Afasta bem da grade de filmes */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    /* MÁGICA DO TERROR: Gradiente escurecendo a sua imagem */
+    /* ATENÇÃO: Substitua 'sua_imagem_panico.jpg' pelo nome do seu arquivo */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(15, 0, 0, 0.9)), url('../imagens/carrossel/meianoite.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantém o efeito parallax épico */
+    
+    border-top: 2px solid #8a0303; /* Borda superior vermelho-sangue */
+    border-bottom: 2px solid #8a0303;
+}
+
+.midnight-content {
+    z-index: 2;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* Crachá Temático */
+.midnight-badge {
+    background-color: #8a0303; 
+    color: white;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(138, 3, 3, 0.6); /* Brilho vermelho */
+}
+
+/* Título com Sombra Sangrenta */
+.midnight-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 15px rgba(255, 0, 0, 0.6); /* Efeito luminoso vermelho no texto */
+}
+
+.midnight-desc {
+    font-size: 1.3rem;
+    color: #cccccc;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Botão Macabro */
+.btn-buy-midnight {
+    background: #000000; /* Fundo preto */
+    color: #ff3333; /* Texto vermelho vivo */
+    border: 2px solid #8a0303;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(138, 3, 3, 0.3);
+}
+
+.btn-buy-midnight:hover {
+    background: #8a0303; /* Fica todo vermelho ao passar o mouse */
+    color: #ffffff; /* Texto branco */
+    border-color: #ff0000; /* Borda acende */
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.8);
+}
+
+
+
+
+
+/* Estilos do Rodapé (Footer) */
+.cinema-footer {
+    background-color: #111111; /* Fundo bem escuro para contrastar com o cabeçalho */
+    color: #ffffff;
+    padding: 40px 50px 20px; /* Espaçamento interno (topo, laterais, fundo) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Secção das Redes Sociais */
+.social-section {
+    text-align: center; /* Centraliza o "SIGA-NOS" e os botões */
+    margin-bottom: 30px;
+}
+
+.social-section h3 {
+    font-size: 1.2rem;
+    color: #E50914; /* O mesmo vermelho do cabeçalho para criar identidade visual */
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaço entre os botões sociais */
+}
+
+/* Estilo dos botões sociais */
+.btn-social {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #333333;
+    width: 45px; /* Largura fixa */
+    height: 45px; /* Altura fixa */
+    display: flex; /* Flexbox para centralizar o ícone no meio do botão */
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Transforma o botão num círculo perfeito */
+    font-size: 1.3rem; /* Aumenta um pouco o tamanho do ícone */
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o cursor sobre os botões sociais */
+.btn-social:hover {
+    background-color: #E50914; /* Fica vermelho */
+    transform: translateY(-5px); /* Dá um pequeno "salto" para cima */
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4); /* Sombra vermelha */
+}
+
+/* Linha divisória */
+.footer-line {
+    border: none;
+    height: 1px;
+    background-color: #444444; /* Uma linha cinza discreta */
+    margin: 0 0 20px 0;
+}
+
+/* Secção Inferior (Copyright e Links) */
+.legal-section {
+    display: flex;
+    justify-content: space-between; /* Coloca o copyright à esquerda e os links à direita */
+    align-items: center;
+    font-size: 0.9rem;
+    color: #aaaaaa; /* Texto um pouco mais claro para não chamar tanta atenção */
+}
+
+/* Agrupamento dos links da direita */
+.legal-links {
+    display: flex;
+    gap: 30px;
+}
+
+.legal-links a {
+    text-decoration: none;
+    color: #aaaaaa;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: #ffffff; /* Fica branco ao passar o cursor */
+}
+
+
+/* ==========================================================================
+--- RESPONSIVIDADE (CELULARES E TABLETS) ---
+A Mágica das Media Queries
+========================================================================== */
+
+/*
+PASSO 1: TABLETS E TELAS MÉDIAS (max-width: 1024px)
+iPads em modo paisagem e monitores menores começam a espremer o layout.
+*/
+@media (max-width: 1024px) {
+    .cinema-header {
+        gap: 50px;
+        padding: 0 30px;
+    }
+
+    .slide-info-left {
+        width: 50%;
+    }
+
+    .coming-soon-container {
+        gap: 20px;
+    }
+
+    .coming-soon-title {
+        font-size: 2.5rem;
+    }
+}
+
+/*
+PASSO 2: CELULARES E TABLETS EM PÉ (max-width: 768px)
+Layouts horizontais viram verticais (colunas).
+*/
+@media (max-width: 768px) {
+    .main-content {
+        margin: 10px 15px;
+    }
+
+    .cinema-header {
+        justify-content: center;
+        gap: 0;
+        padding: 0 15px;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .carousel-container {
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .slide {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .slide-info-left {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .slide-poster-wrapper {
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .slide-hero-right {
+        display: none;
+    }
+
+    .movie-card {
+        flex-direction: column;
+    }
+
+    .movie-card-poster {
+        width: 100%;
+        height: 350px;
+    }
+
+    .movie-card-poster img {
+        object-position: top;
+    }
+
+    .coming-soon-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .coming-soon-text-col {
+        align-items: center;
+    }
+
+    .coming-soon-poster-col {
+        width: 80%;
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-poster-col, .modal-text-col {
+        width: 100%;
+    }
+
+    .modal-poster-img {
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .legal-section {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .legal-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/*
+PASSO 3: CELULARES PEQUENOS (max-width: 480px)
+Ajuste fino de tipografia.
+*/
+@media (max-width: 480px) {
+    .movie-title {
+        font-size: 1.8rem;
+    }
+
+    .coming-soon-title, .promo-title {
+        font-size: 2rem;
+    }
+
+    .midnight-title {
+        font-size: 2.8rem;
+    }
+
+    .btn-buy-tickets, .btn-buy-midnight, .btn-trailer {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .movie-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-sinopse {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+PASSO 4: iPHONE 14 PRO MAX E SIMILARES — PORTRAIT (max-width: 430px)
+========================================================================== */
+@media (max-width: 430px) {
+
+    /* --- TIPOGRAFIA --- */
+    .movie-title {
+        font-size: 1.6rem;
+    }
+
+    .coming-soon-title, .promo-title {
+        font-size: 1.8rem;
+    }
+
+    .midnight-title {
+        font-size: 2.5rem;
+        letter-spacing: 0px;
+    }
+
+    /* --- MODAL DE SINOPSE --- */
+    .modal-card {
+        width: 95%;
+        padding: 15px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    /* --- HORÁRIOS --- */
+    .movie-times {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .time {
+        padding: 8px 15px;
+    }
+
+    /* --- CABEÇALHO: Logo em cima, menu scrollável embaixo --- */
+    .cinema-header {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 0 0 0;
+        gap: 10px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    /* Compensa a altura extra do header de duas linhas */
+    body {
+        padding-top: 115px;
+    }
+
+    /* --- MENU SWIPE HORIZONTAL (estilo app) --- */
+    .main-menu {
+        display: block;          /* Ressuscita o menu que foi escondido em 768px */
+        width: 100%;
+        overflow-x: auto;        /* Rola lateralmente quando não couber */
+        white-space: nowrap;     /* Proíbe os itens de quebrarem linha */
+        -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+    }
+
+    /* Esconde a barra de scroll sem travar o swipe */
+    .main-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-menu ul {
+        display: inline-flex;    /* inline-flex para respeitar o white-space: nowrap */
+        justify-content: flex-start;
+        padding: 0 15px 12px 15px;
+        gap: 8px;
+    }
+
+    .main-menu a {
+        font-size: 0.85rem;
+        padding: 7px 12px;
+        white-space: nowrap;     /* Garante que o texto do link não quebre */
+    }
+
+    /* --- BANNER PROPORCIONAL --- */
+    .banner-container {
+        height: auto;
+        padding: 10px 15px;
+        background-color: transparent;
+    }
+
+    .banner-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+}
+
+/* ==========================================================================
+PASSO 5: iPHONE 14 PRO MAX — LANDSCAPE (orientação deitada, 932px de largura)
+Quando o iPhone é rotacionado, a largura vira 932px e a altura 430px.
+Precisamos reajustar o header e o menu para não desperdiçar espaço vertical.
+========================================================================== */
+
+/* ==========================================================================
+   MODAL DE COMPRA DE INGRESSOS
+========================================================================== */
+
+.ticket-modal-overlay {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(14px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.ticket-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.ticket-modal-card {
+    background: rgba(18, 18, 18, 0.96);
+    border: 1px solid rgba(229, 9, 20, 0.35);
+    border-radius: 14px;
+    padding: 36px 40px;
+    width: 92%;
+    max-width: 780px;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-shadow: 0 0 50px rgba(229, 9, 20, 0.2);
+    transform: translateY(-24px);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ticket-modal-overlay.open .ticket-modal-card {
+    transform: translateY(0);
+}
+
+/* Scrollbar discreta */
+.ticket-modal-card::-webkit-scrollbar { width: 6px; }
+.ticket-modal-card::-webkit-scrollbar-track { background: transparent; }
+.ticket-modal-card::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* Cabeçalho */
+.ticket-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.ticket-modal-badge {
+    display: inline-block;
+    background-color: #E50914;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+}
+
+.ticket-modal-title {
+    color: gold;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.ticket-close-btn {
+    color: #d12121;
+    font-size: 2.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px red;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.ticket-close-btn:hover {
+    color: #ff4d4d;
+    transform: scale(1.1);
+}
+
+/* Formulário */
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ticket-form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.ticket-form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 7px;
+}
+
+.ticket-form-group label {
+    font-size: 0.82rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+}
+
+.ticket-form-group input,
+.ticket-form-group select {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 11px 14px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.ticket-form-group input[readonly] {
+    cursor: default;
+    color: #aaaaaa;
+}
+
+.ticket-form-group input:focus,
+.ticket-form-group select:focus {
+    border-color: #E50914;
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.18);
+}
+
+/* Corrige a cor do calendário e select em navegadores webkit */
+.ticket-form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+    cursor: pointer;
+}
+
+.ticket-form-group select option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Controle de quantidade */
+.ticket-qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.ticket-qty-control button {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-qty-control button:hover {
+    background: #E50914;
+}
+
+.ticket-qty-control span {
+    min-width: 48px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 0 10px;
+    border-left: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid rgba(255,255,255,0.12);
+    line-height: 44px;
+}
+
+/* Total */
+.ticket-total-group {
+    justify-content: center;
+}
+
+.ticket-total-value {
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: gold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Divider */
+.ticket-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+}
+
+/* Pagamento */
+.ticket-payment-title {
+    font-size: 0.82rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    margin: -8px 0 4px 0;
+}
+
+.ticket-payment-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ticket-payment-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s;
+    flex: 1;
+    min-width: 160px;
+}
+
+.ticket-payment-label:hover {
+    border-color: rgba(229, 9, 20, 0.5);
+    background: rgba(229, 9, 20, 0.08);
+}
+
+.ticket-payment-label input[type="radio"] {
+    accent-color: #E50914;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Rodapé dos botões */
+.ticket-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.ticket-btn-cancel {
+    background: transparent;
+    color: #aaaaaa;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 12px 28px;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.ticket-btn-cancel:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.07);
+}
+
+.ticket-btn-confirm {
+    background: linear-gradient(45deg, #E50914, #b20710);
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 16px rgba(229, 9, 20, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ticket-btn-confirm:hover {
+    background: linear-gradient(45deg, #ff1520, #E50914);
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 10px 22px rgba(229, 9, 20, 0.65);
+}
+
+/* Tela de sucesso */
+.ticket-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 10px;
+    gap: 16px;
+}
+
+.ticket-success-icon {
+    font-size: 4rem;
+    animation: ticketPop 0.5s ease;
+}
+
+@keyframes ticketPop {
+    0%   { transform: scale(0.5); opacity: 0; }
+    80%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.ticket-success-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: gold;
+    text-shadow: 0 0 12px rgba(255,215,0,0.4);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.ticket-success-msg {
+    color: #cccccc;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .ticket-modal-card {
+        padding: 22px 18px;
+    }
+
+    .ticket-form-row {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .ticket-modal-title {
+        font-size: 1.4rem;
+    }
+
+    .ticket-payment-options {
+        flex-direction: column;
+    }
+
+    .ticket-payment-label {
+        min-width: unset;
+    }
+
+    .ticket-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .ticket-btn-cancel,
+    .ticket-btn-confirm {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+    /* --- CABEÇALHO: volta para linha única horizontal (economiza altura) --- */
+    .cinema-header {
+        flex-direction: row;         /* Logo e menu lado a lado novamente */
+        height: 55px;                /* Menor que os 70px originais para poupar espaço */
+        padding: 0 20px;
+        gap: 30px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    /* Compensação do body para o header de 55px */
+    body {
+        padding-top: 55px;
+    }
+
+    /* --- MENU: horizontal, scrollável, sem quebra de linha --- */
+    .main-menu {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        flex: 1;                     /* Ocupa o espaço restante depois da logo */
+    }
+
+    .main-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-menu ul {
+        display: inline-flex;
+        justify-content: flex-start;
+        padding: 0 10px;
+        gap: 5px;
+    }
+
+    .main-menu a {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        white-space: nowrap;
+    }
+
+    /* --- CARROSSEL: altura reduzida (tela fica bem baixa em landscape) --- */
+    .carousel-container {
+        height: 260px;
+        padding-bottom: 35px;
+    }
+
+    .slide-poster-wrapper {
+        height: 220px;
+    }
+
+    /* --- SLIDE: volta para layout horizontal (há espaço lateral) --- */
+    .slide {
+        flex-direction: row;
+        padding: 10px 20px;
+        align-items: center;
+    }
+
+    .slide-info-left {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        width: 55%;
+        text-align: left;
+        align-items: flex-start;
+        margin-top: 0;
+        gap: 8px;
+    }
+
+    .movie-title {
+        font-size: 1.4rem;
+    }
+
+    /* --- BANNER: altura razoável em landscape --- */
+    .banner-container {
+        height: auto;
+        padding: 8px 15px;
+        background-color: transparent;
+    }
+
+    .banner-img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        max-height: 120px;
+        object-fit: contain;
+    }
+
+    /* --- MODAL: ocupa bem a tela deitada --- */
+    .modal-card {
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 15px;
+    }
+
+    .modal-body {
+        flex-direction: row; /* Volta para colunas lado a lado em landscape */
+    }
+
+    .modal-poster-col {
+        width: 30%;
+    }
+
+    .modal-text-col {
+        width: 70%;
+    }
+
+    .modal-poster-img {
+        max-height: 200px;
+        object-fit: contain;
+    }
+}
