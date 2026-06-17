@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rico Burger 🍔 — Cardápio Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════ -->
+  <header>
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <img src="imagens/imagem_recortada.png" class="logo-icon" alt="logo">
+      </div>
+      <div class="logo-text">
+        <h1>Rico Burger</h1>
+        <span>Cardápio Digital</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <span class="open-badge">● Aberto agora</span>
+      <button class="theme-toggle" id="themeBtn" title="Alternar tema" aria-label="Alternar tema">🌙</button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow">🏆 Melhor burger de Brasília</span>
+      <h2>ONDE O<br><em>SABOR</em><br>VALE MILHÕES</h2>
+      <p>Hambúrgueres artesanais com ingredientes selecionados, feitos na hora. Cada mordida é um upgrade de experiência.</p>
+      <div class="hero-stats">
+        <div class="stat"><strong>4.9★</strong><small>avaliação</small></div>
+        <div class="stat"><strong>20min</strong><small>preparo</small></div>
+        <div class="stat"><strong>+30</strong><small>itens</small></div>
+      </div>
+    </div>
+    <div class="hero-burger" aria-hidden="true">
+      <img src="imagens/ChatGPT Image 17 de mai. de 2026, 23_11_19.png" alt="">
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       BARRA DE FILTROS
+  ════════════════════════════════════════════ -->
+  <nav class="filter-bar" aria-label="Filtrar categorias">
+    <span class="filter-label">Filtrar:</span>
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="lanches">🍔 Lanches</button>
+    <button class="filter-btn" data-filter="bebidas">🥤 Bebidas</button>
+    <button class="filter-btn" data-filter="sobremesas">🍨 Sobremesas</button>
+    <button class="filter-btn" data-filter="porcoes">🍟 Porções</button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ════════════════════════════════════════════ -->
+  <main>
+
+    <!-- ── LANCHES ─────────────────────────────── -->
+    <section class="menu-section" id="sec-lanches">
+      <div class="section-header">
+        <span class="section-icon"></span>
+        <h3>LANCHES</h3>
+        <span class="section-count">6 itens</span>
+      </div>
+      <div class="card-grid">
+
+        <article class="card" data-cat="lanches">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop" alt="Classic Smash" loading="lazy" />
+            <span class="card-badge">Popular</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Classic Smash</p>
+            <p class="card-desc">Blend bovino 180g, queijo cheddar derretido, alface americana, tomate confit e molho da casa.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>28,90</div>
+              <button class="add-btn" aria-label="Adicionar Classic Smash">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="lanches">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&auto=format&fit=crop" alt="Bacon Supreme" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Bacon Supreme</p>
+            <p class="card-desc">Blend bovino 200g, bacon crocante caramelizado, queijo suíço, cebola roxa e BBQ defumado.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>34,90</div>
+              <button class="add-btn" aria-label="Adicionar Bacon Supreme">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="lanches">
+          <div class="card-img">
+            <img src="https://boomi.b-cdn.net/wp-content/uploads/2022/05/Receitas-de-hamburguer-vegano.png.webp" alt="Veggie Hack" loading="lazy" />
+            <span class="card-badge">🌱 Vegano</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Veggie Hack</p>
+            <p class="card-desc">Hambúrguer de grão-de-bico com beterraba, rúcula, tomate seco, queijo de castanha e maionese de ervas.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>30,90</div>
+              <button class="add-btn" aria-label="Adicionar Veggie Hack">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="lanches">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=500&auto=format&fit=crop" alt="Chicken Crispy" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Chicken Crispy</p>
+            <p class="card-desc">Peito de frango empanado na panko, queijo prato, picles e molho ranch picante.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>27,90</div>
+              <button class="add-btn" aria-label="Adicionar Chicken Crispy">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="lanches">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?w=500&auto=format&fit=crop" alt="Double Smash" loading="lazy" />
+            <span class="card-badge">🔥 Novo</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Double Smash</p>
+            <p class="card-desc">Dois blends bovinos 120g cada, cheddar duplo, cebola caramelizada, picles e molho especial.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>39,90</div>
+              <button class="add-btn" aria-label="Adicionar Double Smash">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="lanches">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&auto=format&fit=crop" alt="Picanha Burger" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Picanha Burger</p>
+            <p class="card-desc">Blend de picanha 220g, queijo provolone, farofa de bacon, cebola crispy e molho chimichurri.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>44,90</div>
+              <button class="add-btn" aria-label="Adicionar Picanha Burger">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── BEBIDAS ─────────────────────────────── -->
+    <section class="menu-section" id="sec-bebidas">
+      <div class="section-header">
+        <span class="section-icon"></span>
+        <h3>BEBIDAS</h3>
+        <span class="section-count">5 itens</span>
+      </div>
+      <div class="card-grid">
+
+        <article class="card" data-cat="bebidas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500&auto=format&fit=crop" alt="Shake Clássico" loading="lazy" />
+            <span class="card-badge">⭐ Favorito</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Shake Clássico</p>
+            <p class="card-desc">Milk-shake cremoso nos sabores: baunilha, chocolate, morango ou doce de leite. 400ml.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>18,90</div>
+              <button class="add-btn" aria-label="Adicionar Shake">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="bebidas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop" alt="Limonada Suíça" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Limonada Suíça</p>
+            <p class="card-desc">Limão tahiti batido com leite condensado e creme de leite. Refrescante e cremosa. 500ml.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>14,90</div>
+              <button class="add-btn" aria-label="Adicionar Limonada">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="bebidas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=500&auto=format&fit=crop" alt="Suco Natural" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Suco Natural</p>
+            <p class="card-desc">Laranja, maracujá, acerola ou goiaba. Feito na hora, sem adição de açúcar. 400ml.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>10,90</div>
+              <button class="add-btn" aria-label="Adicionar Suco">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="bebidas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop" alt="Refrigerante" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Refrigerante Lata</p>
+            <p class="card-desc">Coca-Cola, Guaraná Antarctica, Sprite ou Fanta. 350ml gelado.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>7,90</div>
+              <button class="add-btn" aria-label="Adicionar Refrigerante">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="bebidas">
+          <div class="card-img">
+            <img src="https://hortifrutibr.vtexassets.com/arquivos/ids/173772-768-auto/Agua-mineral-com-gas-Minalba-gelada-15l.jpg.webp?v=638931324298430000&format=webp&quality=8" alt="Água Mineral" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Água Mineral</p>
+            <p class="card-desc">Com ou sem gás. Garrafa 500ml gelada, da melhor qualidade para acompanhar seu lanche.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>5,00</div>
+              <button class="add-btn" aria-label="Adicionar Água">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── SOBREMESAS ──────────────────────────── -->
+    <section class="menu-section" id="sec-sobremesas">
+      <div class="section-header">
+        <span class="section-icon">🍨</span>
+        <h3>SOBREMESAS</h3>
+        <span class="section-count">4 itens</span>
+      </div>
+      <div class="card-grid">
+
+        <article class="card" data-cat="sobremesas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop" alt="Petit Gateau" loading="lazy" />
+            <span class="card-badge">🔥 Quente</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Petit Gateau</p>
+            <p class="card-desc">Bolinho de chocolate quente com coração cremoso, acompanhado de sorvete de creme e calda de morango.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>22,90</div>
+              <button class="add-btn" aria-label="Adicionar Petit Gateau">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="sobremesas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop" alt="Brownie Supremo" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Brownie Supremo</p>
+            <p class="card-desc">Brownie artesanal de chocolate belga com sorvete de baunilha, Nutella e nozes caramelizadas.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>19,90</div>
+              <button class="add-btn" aria-label="Adicionar Brownie">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="sobremesas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&auto=format&fit=crop" alt="Sorvete Artesanal" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Sorvete Artesanal</p>
+            <p class="card-desc">2 bolas nos sabores da estação: creme, pistache, chocolate belga ou frutas vermelhas.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>14,90</div>
+              <button class="add-btn" aria-label="Adicionar Sorvete">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="sobremesas">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop" alt="Cheesecake NY" loading="lazy" />
+            <span class="card-badge">⭐ Especial</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Cheesecake NY</p>
+            <p class="card-desc">Fatia generosa de cheesecake cremoso ao estilo Nova York com calda de frutas vermelhas frescas.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>17,90</div>
+              <button class="add-btn" aria-label="Adicionar Cheesecake">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── PORÇÕES ──────────────────────────────── -->
+    <section class="menu-section" id="sec-porcoes">
+      <div class="section-header">
+        <span class="section-icon"></span>
+        <h3>PORÇÕES</h3>
+        <span class="section-count">4 itens</span>
+      </div>
+      <div class="card-grid">
+
+        <article class="card" data-cat="porcoes">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1630431341973-02e1b662ec35?w=500&auto=format&fit=crop" alt="Batata Frita" loading="lazy" />
+            <span class="card-badge">Popular</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Batata Frita Crocante</p>
+            <p class="card-desc">Batatas palito crocantes temperadas com sal, alho e pimenta do reino. Acompanha molho especial.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>16,90</div>
+              <button class="add-btn" aria-label="Adicionar Batata Frita">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="porcoes">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1639024471283-03518883512d?w=500&auto=format&fit=crop" alt="Onion Rings" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Onion Rings</p>
+            <p class="card-desc">Anéis de cebola empanados no panko crocante, com molho tártaro e limão. 12 unidades.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>18,90</div>
+              <button class="add-btn" aria-label="Adicionar Onion Rings">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="porcoes">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?w=500&auto=format&fit=crop" alt="Nuggets de Frango" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Nuggets de Frango</p>
+            <p class="card-desc">10 unidades de nuggets artesanais de peito de frango, crocantes por fora, macios por dentro.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>20,90</div>
+              <button class="add-btn" aria-label="Adicionar Nuggets">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-cat="porcoes">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=500&auto=format&fit=crop" alt="Batata Rústica com Cheddar" loading="lazy" />
+            <span class="card-badge">🔥 Novo</span>
+          </div>
+          <div class="card-body">
+            <p class="card-name">Batata Rústica com Cheddar</p>
+            <p class="card-desc">Batatas rústicas assadas cobertas com cheddar cremoso e bacon em pedaços generosos.</p>
+            <div class="card-footer">
+              <div class="card-price"><small>R$</small>24,90</div>
+              <button class="add-btn" aria-label="Adicionar Batata Rústica">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-col footer-brand">
+        <div class="logo-wrap">
+          <div class="logo-icon">
+            <img src="imagens/imagem_recortada.png" class="logo-icon" alt="logo">
+          </div>
+          <div class="logo-text">
+            <h1>Rico Burger</h1>
+          </div>
+        </div>
+        <p>Hambúrgueres artesanais feitos com código e paixão. Onde cada ingrediente é um bit de sabor.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <span>(61) 99999-1234</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <span>Asa Norte, Brasília — DF</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </span>
+          <span>contato@ricoburger.com.br</span>
+        </div>
+        <div class="socials">
+          <a class="social-link" href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a class="social-link" href="#" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="#" aria-label="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horário de Funcionamento</h4>
+        <div class="hours-row"><span>Seg – Qui</span><span>18h – 23h</span></div>
+        <div class="hours-row"><span>Sexta</span><span>18h – 00h</span></div>
+        <div class="hours-row"><span>Sábado</span><span>12h – 00h</span></div>
+        <div class="hours-row"><span>Domingo</span><span>12h – 22h</span></div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Rico Burger — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a class="wa-float" href="https://wa.me/5561999991234" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <img src="imagens/whatsapp_recortado.png" alt="WhatsApp">
+  </a>
+
+  <!-- Script externo carregado no final do body -->
+  <script src="script.js"></script>
+
+</body>
+</html>
