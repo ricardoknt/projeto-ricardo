@@ -1,0 +1,87 @@
+/*Fundo da página*/
+body{
+    font-family: 'Arial Narrow Bold', sans-serif;
+    background-color: #dfe3e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0
+}
+
+/* Caixa principal*/
+.container{
+    background-color: #f4f4f4;
+    width: 320px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+
+/*Título*/
+#titulo{
+    text-align: center;
+    color: #2f5d8c;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+/*Labels*/
+label{
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+/* Campos */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2f80c9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #2469a7;
+}
+
+/* Resultado */
+#resposta {
+    background-color: #ee0b0b;
+    color: #161616;
+    padding: 12px;
+    border-radius: 4px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+#resposta.aprovado {
+    background-color: #5bf73c;
+    color: #0c0c0c;
+    padding: 12px;
+    border-radius: 4px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+#resposta.recuperacao {
+    background-color: #eba82e;
+    color: #070707;
+    padding: 12px;
+    border-radius: 4px;
+    line-height: 1.8;
+    font-size: 14px;
+}
