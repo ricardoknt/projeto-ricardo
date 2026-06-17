@@ -7,7 +7,15 @@
       name="description"
       content="Portfólio pessoal de Ricardo Vieira com projetos, currículo, blog e contato."
     />
+    <meta property="og:title" content="Ricardo Vieira | Portfólio Pessoal" />
+    <meta
+      property="og:description"
+      content="Portfólio pessoal de Ricardo Vieira com projetos, currículo, blog e contato."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
     <title>Ricardo Vieira | Portfólio Pessoal</title>
+    <link rel="icon" href="assets/imagens/86f17eee-1312-45ca-8c54-e87ccebf3064.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,36 +26,7 @@
     <script src="assets/js/app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="logo-icon" href="index.html" aria-label="Página inicial">
-        <img
-          src="assets/imagens/86f17eee-1312-45ca-8c54-e87ccebf3064.png"
-          alt=""
-          width="40"
-          height="40"
-        />
-      </a>
-
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-        data-menu-toggle
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="main-nav" data-main-nav>
-        <a href="index.html" data-nav-link>Início</a>
-        <a href="index.html#projetos" data-nav-link>Projetos</a>
-        <a href="curriculo.html" data-nav-link>Currículo</a>
-        <a href="blog.html" data-nav-link>Blog</a>
-        <a href="contato.html" data-nav-link>Contato</a>
-      </nav>
-    </header>
+    <div data-site-header></div>
 
     <main>
       <section class="hero">
@@ -69,6 +48,9 @@
             src="assets/imagens/86f17eee-1312-45ca-8c54-e87ccebf3064.png"
             alt="Ilustração de perfil de Ricardo Vieira"
             class="profile-image"
+            loading="lazy"
+            width="360"
+            height="360"
           />
           <div>
             <strong>Ricardo Vieira</strong>
@@ -131,7 +113,13 @@
 
         <div class="project-grid">
           <article class="project-card">
-            <div class="project-media media-blue">01</div>
+            <div class="project-media">
+              <img
+                src="projetos/calculadora-media-notas/img/Screenshot_1.png"
+                alt="Captura da calculadora de médias"
+                loading="lazy"
+              />
+            </div>
             <div class="project-body">
               <span class="tag">Lógica de Programação I</span>
               <h3>Calculadora de médias</h3>
@@ -159,13 +147,19 @@
           </article>
 
           <article class="project-card">
-            <div class="project-media media-gray">02</div>
+            <div class="project-media">
+              <img
+                src="projetos/rico-burguer/imagens/imagem_recortada.png"
+                alt="Captura do cardápio Rico Burger"
+                loading="lazy"
+              />
+            </div>
             <div class="project-body">
               <span class="tag">Web Design</span>
-              <h3>Página de apresentação de um cardapio de restaurante ficticio</h3>
+              <h3>Cardápio digital de restaurante fictício</h3>
               <p>
-                Página estática criada para praticar estrutura HTML, CSS e JavaScript organização
-                de arquivos e publicação local.
+                Página estática criada para praticar estrutura HTML, CSS,
+                JavaScript, organização de arquivos e publicação local.
               </p>
               <dl>
                 <div>
@@ -184,13 +178,19 @@
           </article>
 
           <article class="project-card">
-            <div class="project-media media-dark">03</div>
+            <div class="project-media">
+              <img
+                src="projetos/cine-alfa/imagens/logo.png"
+                alt="Captura do site Alfa Cinemas"
+                loading="lazy"
+              />
+            </div>
             <div class="project-body">
               <span class="tag">Web Design</span>
-              <h3>Página de apresentação de um cinema ficticio com filmes em cartaz</h3>
+              <h3>Site de cinema fictício com filmes em cartaz</h3>
               <p>
-                  Site atual com menu de navegação, blog, currículo, formulário de
-                  contato validado e layout responsivo.
+                Landing page do Alfa Cinemas com carrossel de destaques, grade de
+                filmes, modais de sinopse, trailer e compra simulada de ingressos.
               </p>
               <dl>
                 <div>
@@ -199,19 +199,18 @@
                 </div>
                 <div>
                   <dt>Tecnologias</dt>
-                  <dd>HTML, CSS, JavaScript puro</dd>
+                  <dd>HTML, CSS, JavaScript e PHP (versão dinâmica)</dd>
                 </div>
               </dl>
               <a class="button project-link" href="projetos/cine-alfa/index.html">
                 Ver projeto
               </a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>&copy; <span data-current-year></span> Ricardo Vieira. Portfólio pessoal.</p>
-      <a href="contato.html">Entre em contato</a>
-    </footer>
+    <div data-site-footer></div>
   </body>
 </html>
