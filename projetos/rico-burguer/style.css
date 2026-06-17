@@ -728,3 +728,26 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+.back-portfolio {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 200;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid var(--gold, #c9a227);
+  color: var(--gold, #c9a227);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+.back-portfolio:hover,
+.back-portfolio:focus-visible {
+  background: var(--gold, #c9a227);
+  color: #111;
+}
